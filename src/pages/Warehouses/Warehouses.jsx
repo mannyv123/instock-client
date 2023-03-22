@@ -4,7 +4,6 @@ import Header from '../../components/Header/Header';
 function Warehouses() {
     return (
         <div>
-            <Header />
             <h1>Warehouse Page</h1>
         </div>
     );
