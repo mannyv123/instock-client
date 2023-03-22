@@ -2,9 +2,12 @@ import "./WarehouseDetails.scss";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function WarehouseDetails() {
   const api_url = "http://localhost:8000";
+
+  const navigate = useNavigate();
 
   const [warehouse, setWarehouse] = useState({});
   // This is extracting id from useParams.
@@ -22,14 +25,21 @@ function WarehouseDetails() {
     },
     [id]
   );
+
   useEffect(() => {
     getWarehouseDetails(id);
   }, [getWarehouseDetails]);
 
+  function handleOnBack(event) {
+    // This prevents refreshing the page when you submit something.
+    event.preventDefault();
+    return navigate("/");
+  }
+
   return (
     <div>
       <div>
-        <a>Arrow Back</a>
+        <button onClick={handleOnBack}>Arrow Back</button>
         <h1>{warehouse.warehouse_name}</h1>
         <button>Edit</button>
       </div>
