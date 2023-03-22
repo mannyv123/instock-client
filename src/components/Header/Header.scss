@@ -1,0 +1,59 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+
+.header {
+    padding: 1.6875rem 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $instock-graphite;
+
+    @include tablet {
+        padding: 1.6875rem 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    @include desktop {
+        padding: 1.6875rem 8.125rem;
+    }
+
+    &__logo {
+        height: 1.076923rem;
+        margin: 0 auto;
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            height: 1.076923rem;
+            padding-top: 1rem;
+            margin: 0 auto 0 0;
+            padding-bottom: 0;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__button {
+        width: 10.25rem;
+        height: 2.25rem;
+        border-radius: 20px;
+        border: none;
+        color: $instock-white;
+        background-color: $instock-graphite;
+        font-size: $fs-mobile-buttons;
+
+        @include tablet {
+            width: 6.6875rem;
+            height: 2.375rem;
+            font-size: $fs-desktop-buttons;
+        }
+    }
+
+    &__button:hover {
+        background-color: $instock-black;
+    }
+}
