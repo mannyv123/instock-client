@@ -28,13 +28,19 @@
         color: #13182c;
 
         @include tablet {
-            border-radius: 16px;
-            width: 90%;
-            height: 30vh;
+            border-radius: 0.1875rem;
+            width: 87.5%;
+            height: 16.375rem;
 
-            top: 30%;
+            top: 38%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+
+        @include desktop {
+            width: 52.5%;
+
+            // top: 37.8%;
         }
     }
 
@@ -43,24 +49,52 @@
         margin: 0.3125rem;
     }
 
-    &__header {
+    &__content {
+        display: flex;
+        flex-direction: column;
         margin-top: 1.5625rem;
+        flex: 1;
+
+        @include tablet {
+            padding: 0 3rem;
+            margin-top: 0;
+        }
     }
+
+    // &__header {
+    //     margin-top: 1.5625rem;
+
+    //     @include tablet {
+    //         margin-top: 0.3125rem;
+    //     }
+    // }
 
     &__title {
         font-size: 1.75rem;
+
+        @include tablet {
+            font-size: 2rem;
+        }
     }
 
-    &__content {
+    &__text {
         margin-top: 1rem;
         font-size: 0.9375rem;
         line-height: 1.625rem;
         flex: 1;
+
+        @include tablet {
+            font-size: 1rem;
+        }
     }
 
     &__actions {
         display: flex;
         gap: 1rem;
+
+        @include tablet {
+            justify-content: right;
+        }
     }
 
     &__button {
@@ -68,6 +102,14 @@
         height: 2.25rem;
         border-radius: 1.25rem;
         font-size: 0.8125rem;
+
+        @include tablet {
+            height: 2.375rem;
+            width: fit-content;
+            flex: none;
+            padding: 0 1rem;
+            font-size: 0.875rem;
+        }
 
         &--cancel {
             background-color: white;
