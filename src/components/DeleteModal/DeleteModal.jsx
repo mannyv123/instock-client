@@ -1,12 +1,30 @@
 //--------------------Manjot Code Start----------------------
 import "./DeleteModal.scss";
 import closeIcon from "../../assets/icons/close-24px.svg";
+import axios from "axios";
 
-function DeleteModal({ setIsOpen }) {
+const API_URL = "http://localhost:5001/api";
+
+function DeleteModal({ setIsOpen, location, type, typePlural }) {
     //test variables
-    const location = "Washington";
-    const type = "warehouse";
-    const typePlural = "warehouses";
+    // const location = "Washington";
+    // const type = "warehouse";
+    // const typePlural = "warehouses";
+    let id = "90ac3319-70d1-4a51-b91d-ba6c2464408c";
+
+    const handleWarehouseDelete = () => {
+        console.log("DELETE");
+        axios
+            .delete(`${API_URL}/warehouses/${id}`)
+            .then(() => {
+                //reload the list of warehouses
+                console.log(`Warehouse with ID ${id} successfully deleted`);
+                setIsOpen(false);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     return (
         <div className="modal">
@@ -36,7 +54,13 @@ function DeleteModal({ setIsOpen }) {
                         >
                             Cancel
                         </button>
-                        <button className="modal__button modal__button--delete">Delete</button>
+                        <button
+                            type="button"
+                            onClick={handleWarehouseDelete}
+                            className="modal__button modal__button--delete"
+                        >
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
