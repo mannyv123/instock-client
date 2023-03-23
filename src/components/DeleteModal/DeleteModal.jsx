@@ -1,5 +1,6 @@
 //--------------------Manjot Code Start----------------------
 import "./DeleteModal.scss";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
 function DeleteModal({ setIsOpen }) {
     //test variables
@@ -11,9 +12,12 @@ function DeleteModal({ setIsOpen }) {
         <div className="modal">
             <div className="modal__bg" onClick={() => setIsOpen(false)}></div>
             <div className="modal__body">
-                <button className="modal__close-btn" onClick={() => setIsOpen(false)}>
-                    Close Icon
-                </button>
+                <img
+                    className="modal__close"
+                    src={closeIcon}
+                    alt="close modal"
+                    onClick={() => setIsOpen(false)}
+                />
                 <div className="modal__header">
                     <h1 className="modal__title">
                         Delete {location} {type}?
@@ -25,15 +29,10 @@ function DeleteModal({ setIsOpen }) {
                     {` ${typePlural}`}. You won't be able to undo this action.
                 </p>
                 <div className="modal__actions">
-                    <div className="modal__actions-container">
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="modal__button modal__button--cancel"
-                        >
-                            Cancel
-                        </button>
-                        <button className="modal__button modal__button--delete">Delete</button>
-                    </div>
+                    <button onClick={() => setIsOpen(false)} className="modal__button modal__button--cancel">
+                        Cancel
+                    </button>
+                    <button className="modal__button modal__button--delete">Delete</button>
                 </div>
             </div>
         </div>
