@@ -1,10 +1,15 @@
 import './Warehouses.scss';
-import Header from '../../components/Header/Header';
+import '../../App.scss';
+// import Header from '../../components/Header/Header';
+import SearchHeader from '../../components/SearchHeader/SearchHeader';
+import WarehouseBody from '../../components/WarehouseBody/WarehouseBody';
 
 function Warehouses() {
     return (
-        <div>
-            <h1>Warehouse Page</h1>
+        //    Felipe's code
+        <div className='container'>
+            <SearchHeader />
+            <WarehouseBody />
         </div>
     );
 }
