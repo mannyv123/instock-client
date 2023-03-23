@@ -43,7 +43,7 @@ function WarehouseDetails() {
         <h1>{warehouse.warehouse_name}</h1>
         <button>Edit</button>
       </div>
-      {/* display flex row on first divç */}
+      {/* display flex row on first div */}
       <div>
         <div>
           <p>Warehouse Address:</p>
