@@ -1,0 +1,108 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+// @import "../../styles/partials/fonts";
+
+.content {
+  &__header {
+    padding-left: 2rem;
+    font-size: 1.5rem;
+  }
+  &__sub-container {
+    padding: 1rem;
+    display: flex;
+    @include desktop {
+      padding: 2rem;
+    }
+  }
+  &__arrow-back {
+    margin-top: 1.2rem;
+    &--icon {
+      background-image: url(../../assets/Icons/arrow_back-24px.svg);
+      width: 1.5rem;
+      height: 1.5rem;
+      position: absolute;
+    }
+  }
+  &__container {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__input-container {
+    @include tablet {
+      border-right: 0.1rem solid $instock-cloud;
+      padding-right: 2rem;
+      @include desktop {
+        padding-right: 4rem;
+      }
+    }
+  }
+
+  &__details-container {
+    padding: 1rem;
+    border-top: 0.1rem solid $instock-cloud;
+    @include tablet {
+      width: 100%;
+      padding-top: 0;
+    }
+    @include desktop {
+      padding: 2rem;
+    }
+  }
+  &__title {
+    font-size: 1.3rem;
+  }
+  &__input-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.8rem;
+    border-radius: 1.3rem;
+    border-color: $instock-cloud;
+    border-style: solid;
+    border-width: 0.1rem;
+    padding: 0.3rem 0 0.3rem 1rem;
+  }
+  &__buttons-container {
+    background-color: $instock-light-grey;
+    padding: 2rem 1rem 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    @include tablet {
+      justify-content: end;
+    }
+    @include desktop {
+      padding: 2rem;
+    }
+  }
+  &__cancel {
+    border-radius: 1.3rem;
+    width: 100%;
+    border-style: solid;
+    border-color: $instock-cloud;
+    background-color: $instock-white;
+    @include tablet {
+      width: 5rem;
+    }
+  }
+  &__submit {
+    border-radius: 1.3rem;
+    width: 100%;
+    border-style: solid;
+    border-color: $instock-indigo;
+    background-color: $instock-indigo;
+    color: $instock-white;
+    padding: 0.5rem;
+    @include tablet {
+      width: 9rem;
+    }
+  }
+}
+.error-state {
+  border-color: $instock-red;
+}
