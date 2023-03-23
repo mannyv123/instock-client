@@ -2,6 +2,7 @@ import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Warehouses from './pages/Warehouses/Warehouses';
 import Inventory from './pages/Inventory/Inventory';
+import Footer from './components/Footer/Footer';
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                     <Route path='/warehouses' element={<Warehouses />} />
                     <Route path='/inventory' element={<Inventory />} />
                 </Routes>
+                <Footer />
             </div>
         </BrowserRouter>
     );
