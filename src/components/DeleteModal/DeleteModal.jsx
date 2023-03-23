@@ -2,17 +2,28 @@
 import "./DeleteModal.scss";
 
 function DeleteModal({ setIsOpen }) {
+    //test variables
+    const location = "Washington";
+    const type = "warehouse";
+    const typePlural = "warehouses";
+
     return (
-        <div>
+        <div className="modal">
             <div className="modal__bg" onClick={() => setIsOpen(false)}></div>
             <div className="modal__body">
-                <div className="modal__header">
-                    <h1 className="modal__title">Delete</h1>
-                </div>
                 <button className="modal__close-btn" onClick={() => setIsOpen(false)}>
                     Close Icon
                 </button>
-                <p className="modal__content">Please confirm....</p>
+                <div className="modal__header">
+                    <h1 className="modal__title">
+                        Delete {location} {type}?
+                    </h1>
+                </div>
+
+                <p className="modal__content">
+                    Please confirm that you'd like to delete {location} from the list of
+                    {` ${typePlural}`}. You won't be able to undo this action.
+                </p>
                 <div className="modal__actions">
                     <div className="modal__actions-container">
                         <button
