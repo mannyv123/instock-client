@@ -1,5 +1,4 @@
-import './Inventory.scss';
-import Header from '../../components/Header/Header';
+import "./Inventory.scss";
 
 function Inventory() {
     return (
