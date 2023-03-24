@@ -1,4 +1,4 @@
-import "./Inventory.scss";
+import './Inventory.scss';
 
 function Inventory() {
     return (
