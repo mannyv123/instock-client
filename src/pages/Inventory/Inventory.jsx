@@ -1,5 +1,9 @@
 import './Inventory.scss';
+<<<<<<< HEAD
+import Footer from '../../components/Footer/Footer';
+=======
 import InventoryList from '../../components/InventoryList/InventoryList';
+>>>>>>> develop
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -29,8 +33,14 @@ function Inventory() {
 
 
     return (
+<<<<<<< HEAD
+        <div>
+            <h1>Inventory Page</h1>
+            <Footer />
+=======
         <div className='container'>
             <InventoryList inventoryItems={inventoryItems} />
+>>>>>>> develop
         </div>
     );
 }
