@@ -1,0 +1,13 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+
+.inventory-list {
+    font-family: 'Titillium Web', sans-serif;
+    padding: 0;
+    border-top: solid 1px grey;
+
+    @include tablet{
+        border-top: none;
+    }
+}

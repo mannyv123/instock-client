@@ -4,13 +4,23 @@ import editIcon from '../../assets/icons/edit-24px.svg';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
+import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import WarehouseHeader from '../WarehouseHeader/WarehouseHeader';
-export const apiUrl = 'http://localhost:5005/api';
+export const apiUrl = 'http://localhost:5001/api';
 
 function WarehouseBody() {
     const [warehouses, setWarehouses] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [warehouse, setWarehouse] = useState();
 
     useEffect(() => {
+        getWarehouses();
+    }, []);
+
+    console.log(warehouses);
+
+    function getWarehouses() {
         axios
             .get(`${apiUrl}/warehouses`)
             .then((response) => {
@@ -19,7 +29,7 @@ function WarehouseBody() {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }
 
     return (
         <ul className='warehouse-table'>
@@ -47,9 +57,16 @@ function WarehouseBody() {
                         </span>
                     </div>
                     <div className='warehouse-table__col warehouse-table__col--5' data-label='Actions'>
-                        <button className='warehouse-table__col--btn'>
+                        <button
+                            onClick={() => {
+                                setIsOpen(true);
+                                setWarehouse(warehouse);
+                            }}
+                            className='warehouse-table__col--btn'>
                             <img src={deleteIcon} alt='delete' />
                         </button>
+
+                        {console.log(`warehouse name ${warehouse.warehouse_name}`)}
                         <button className='warehouse-table__col--btn'>
                             <img src={editIcon} alt='edit' />
                         </button>
