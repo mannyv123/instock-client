@@ -1,7 +1,7 @@
 import React from 'react'
-import './SearchHeader.scss'
+import './InventoryHeader.scss'
 
-function SearchHeader() {
+function InventoryHeader() {
   return (
     <div className='search-header'>
         <h1 className='search-header__title'>Inventory</h1>
@@ -13,4 +13,4 @@ function SearchHeader() {
   )
 }
 
-export default SearchHeader
+export default InventoryHeader
