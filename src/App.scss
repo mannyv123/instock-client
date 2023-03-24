@@ -1,23 +1,9 @@
-<<<<<<< HEAD
-@use './styles/partials/fonts' as *;
-<<<<<<< HEAD
-
-* {
-=======
-@use './styles/partials/mixins' as *;
-@use './styles/partials/variables' as *;
-
-html {
-  font-family: 'Titillium Web', sans-serif;
->>>>>>> develop
-=======
 @use "./styles/partials/fonts" as *;
 @use "./styles/partials/mixins" as *;
 @use "./styles/partials/variables" as *;
 
 html {
     font-family: "Titillium Web", sans-serif;
->>>>>>> develop
     box-sizing: border-box;
 }
 
@@ -35,6 +21,7 @@ html {
 =======
     margin: 0;
 }
+
 
 article,
 aside,
@@ -92,9 +79,4 @@ a:visited {
         max-width: 80rem;
         margin: 0 auto;
     }
-<<<<<<< HEAD
-  }
->>>>>>> develop
-=======
 }
->>>>>>> develop

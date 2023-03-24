@@ -1,3 +1,4 @@
+import InventoryItem from '../../components/InventoryItem/InventoryItem';
 import './Inventory.scss';
 import InventoryList from '../../components/InventoryList/InventoryList';
 
@@ -10,23 +11,22 @@ const api = process.env.REACT_APP_API_URL;
 function Inventory() {
     const [inventoryItems, setInventoryItems] = useState([]);
 
-    useEffect (()=> {
+    useEffect(() => {
         generateInventoryItems();
     }, []);
 
-    function generateInventoryItems () {
+    function generateInventoryItems() {
         axios
-            .get (`${api}/inventories`)
-            .then ((res)=> {
-                setInventoryItems(res.data)
+            .get(`${api}/inventories`)
+            .then((res) => {
+                setInventoryItems(res.data);
             })
-            .catch ((err)=> {
-                console.log('err: ', err)
-            })
-    };
+            .catch((err) => {
+                console.log('err: ', err);
+            });
+    }
 
-// -----------------SEYON CODE END----------------------------------------
-
+    // -----------------SEYON CODE END----------------------------------------
 
     return (
         <div className='container'>
