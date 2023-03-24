@@ -1,6 +1,5 @@
 import './Inventory.scss';
 import InventoryList from '../../components/InventoryList/InventoryList';
-import InventoryItem from '../../components/InventoryItem/InventoryItem';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
