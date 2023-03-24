@@ -4,26 +4,24 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 
+const initialValues = {
+  // Warehouse Details
+  warehouse_name: "",
+  address: "",
+  city: "",
+  country: "",
+  // Contact Details
+  contact_name: "",
+  contact_position: "",
+  contact_phone: "",
+  contact_email: "",
+};
+
 function WarehousesAdd() {
   const api_url = "http://localhost:8000";
 
   const navigate = useNavigate();
-
   const [isError, setIsError] = useState(false);
-
-  const initialValues = {
-    // Warehouse Details
-    warehouse_name: "",
-    address: "",
-    city: "",
-    country: "",
-    // Contact Details
-    contact_name: "",
-    contact_position: "",
-    contact_phone: "",
-    contact_email: "",
-  };
-
   const [warehouse, setWarehouse] = useState(initialValues);
 
   function handleOnBack(event) {
@@ -79,105 +77,108 @@ function WarehousesAdd() {
   }
 
   return (
-    <section className="container">
-      <form className="content" onSubmit={handleSubmit}>
-        <div className="content__sub-container">
-          <a className="content__arrow-back" onClick={handleOnBack}>
-            <span className="content__arrow-back--icon"></span>
-          </a>
-          <h1 className="content__header">Add New Warehouse</h1>
-        </div>
-        <div className="content__container">
-          <div className="content__details-container">
-            <div className="content__input-container">
-              <h2 className="content__title">Warehouse Details</h2>
-              <h3 className="content__input-label">Warehouse Name</h3>
+    <>
+      <Header />
+      <section className="container">
+        <form className="content" onSubmit={handleSubmit}>
+          <div className="content__sub-container">
+            <a className="content__arrow-back" onClick={handleOnBack}>
+              <span className="content__arrow-back--icon"></span>
+            </a>
+            <h1 className="content__header">Add New Warehouse</h1>
+          </div>
+          <div className="content__container">
+            <div className="content__details-container">
+              <div className="content__input-container">
+                <h2 className="content__title">Warehouse Details</h2>
+                <h3 className="content__input-label">Warehouse Name</h3>
+                <input
+                  name="warehouse_name"
+                  onChange={handleWarehouseOnChange}
+                  className={`content__input ${isError ? "error-state" : ""}`}
+                  type="text"
+                  value={warehouse.warehouse_name}
+                  placeholder="Warehouse Name"
+                />
+                <h3 className="content__input-label">Street Address</h3>
+                <input
+                  name="address"
+                  onChange={handleWarehouseOnChange}
+                  className={`content__input ${isError ? "error-state" : ""}`}
+                  type="text"
+                  value={warehouse.address}
+                  placeholder="Street Address"
+                />
+                <h3 className="content__input-label">City</h3>
+                <input
+                  name="city"
+                  onChange={handleWarehouseOnChange}
+                  className={`content__input ${isError ? "error-state" : ""}`}
+                  type="text"
+                  value={warehouse.city}
+                  placeholder="City"
+                />
+                <h3 className="content__input-label">Country</h3>
+                <input
+                  name="country"
+                  onChange={handleWarehouseOnChange}
+                  className={`content__input ${isError ? "error-state" : ""}`}
+                  type="text"
+                  value={warehouse.country}
+                  placeholder="Country"
+                />
+              </div>
+            </div>
+
+            <div className="content__details-container">
+              <h2 className="content__title">Contact Details</h2>
+              <h3 className="content__input-label">Contact Name</h3>
               <input
-                name="warehouse_name"
+                name="contact_name"
                 onChange={handleWarehouseOnChange}
                 className={`content__input ${isError ? "error-state" : ""}`}
                 type="text"
-                value={warehouse.warehouse_name}
-                placeholder="Warehouse Name"
+                value={warehouse.contact_name}
+                placeholder="Contact Name"
               />
-              <h3 className="content__input-label">Street Address</h3>
+              <h3 className="content__input-label">Position</h3>
               <input
-                name="address"
+                name="contact_position"
                 onChange={handleWarehouseOnChange}
                 className={`content__input ${isError ? "error-state" : ""}`}
                 type="text"
-                value={warehouse.address}
-                placeholder="Street Address"
+                value={warehouse.contact_position}
+                placeholder="Position"
               />
-              <h3 className="content__input-label">City</h3>
+              <h3 className="content__input-label">Phone Number</h3>
               <input
-                name="city"
+                name="contact_phone"
                 onChange={handleWarehouseOnChange}
                 className={`content__input ${isError ? "error-state" : ""}`}
                 type="text"
-                value={warehouse.city}
-                placeholder="City"
+                value={warehouse.contact_phone}
+                placeholder="Phone Number"
               />
-              <h3 className="content__input-label">Country</h3>
+              <h3 className="content__input-label">Email</h3>
               <input
-                name="country"
+                name="contact_email"
                 onChange={handleWarehouseOnChange}
                 className={`content__input ${isError ? "error-state" : ""}`}
                 type="text"
-                value={warehouse.country}
-                placeholder="Country"
+                value={warehouse.contact_email}
+                placeholder="Email"
               />
             </div>
           </div>
-
-          <div className="content__details-container">
-            <h2 className="content__title">Contact Details</h2>
-            <h3 className="content__input-label">Contact Name</h3>
-            <input
-              name="contact_name"
-              onChange={handleWarehouseOnChange}
-              className={`content__input ${isError ? "error-state" : ""}`}
-              type="text"
-              value={warehouse.contact_name}
-              placeholder="Contact Name"
-            />
-            <h3 className="content__input-label">Position</h3>
-            <input
-              name="contact_position"
-              onChange={handleWarehouseOnChange}
-              className={`content__input ${isError ? "error-state" : ""}`}
-              type="text"
-              value={warehouse.contact_position}
-              placeholder="Position"
-            />
-            <h3 className="content__input-label">Phone Number</h3>
-            <input
-              name="contact_phone"
-              onChange={handleWarehouseOnChange}
-              className={`content__input ${isError ? "error-state" : ""}`}
-              type="text"
-              value={warehouse.contact_phone}
-              placeholder="Phone Number"
-            />
-            <h3 className="content__input-label">Email</h3>
-            <input
-              name="contact_email"
-              onChange={handleWarehouseOnChange}
-              className={`content__input ${isError ? "error-state" : ""}`}
-              type="text"
-              value={warehouse.contact_email}
-              placeholder="Email"
-            />
+          <div className="content__buttons-container">
+            <button className="content__cancel">Cancel</button>
+            <button className="content__submit" type="submit">
+              + Add Warehouse
+            </button>
           </div>
-        </div>
-        <div className="content__buttons-container">
-          <button className="content__cancel">Cancel</button>
-          <button className="content__submit" type="submit">
-            + Add Warehouse
-          </button>
-        </div>
-      </form>
-    </section>
+        </form>
+      </section>
+    </>
   );
 }
 

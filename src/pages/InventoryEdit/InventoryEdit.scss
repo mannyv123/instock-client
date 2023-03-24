@@ -18,7 +18,7 @@
   &__arrow-back {
     &--icon {
       background-image: url(../../assets/icons/arrow_back-24px.svg);
-      margin-top: 1.65rem;
+      margin-top: 1.45rem;
       width: 1.5rem;
       height: 1.5rem;
       background-repeat: no-repeat;
@@ -27,7 +27,7 @@
         cursor: pointer;
       }
       @include tablet {
-        margin-top: 2rem;
+        margin-top: 1.6rem;
       }
     }
   }
@@ -76,7 +76,7 @@
   &__input {
     box-sizing: border-box;
     width: 100%;
-    height: 1.8rem;
+    //height: 1.8rem;
     border-radius: 1.3rem;
     border-color: $instock-cloud;
     border-style: solid;
