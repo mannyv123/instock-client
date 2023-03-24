@@ -2,7 +2,6 @@ import "./WarehousesAdd.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Header from "../../components/Header/Header";
 
 const initialValues = {
   // Warehouse Details
@@ -78,7 +77,6 @@ function WarehousesAdd() {
 
   return (
     <>
-      <Header />
       <section className="container">
         <form className="content" onSubmit={handleSubmit}>
           <div className="content__sub-container">
