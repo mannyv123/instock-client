@@ -1,0 +1,14 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+
+.container{
+    width: 90%;
+    border-radius: 0.1875rem;
+    height: auto;
+    margin-top: -4.2rem;
+    margin-inline: auto;
+    padding: 0 1rem 1rem;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1)
+}
