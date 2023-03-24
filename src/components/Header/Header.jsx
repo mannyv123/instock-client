@@ -1,8 +1,7 @@
-import React from 'react'
-import './Header.scss'
-import logo from '../../assets/logo/InStock-Logo_2x.png'
-import { NavLink } from 'react-router-dom'
-
+import React from "react";
+import "./Header.scss";
+import logo from "../../assets/logos/InStock-Logo_2x.png";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -14,8 +13,7 @@ function Header() {
             <NavLink className='header__button' to='/inventory'>Inventory
             </NavLink>
         </div>
-    </div>
-  )
+    );
 }
 
-export default Header
+export default Header;
