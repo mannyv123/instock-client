@@ -1,12 +1,10 @@
 <<<<<<< HEAD
 @use './styles/partials/fonts' as *;
 <<<<<<< HEAD
-
 * {
 =======
 @use './styles/partials/mixins' as *;
 @use './styles/partials/variables' as *;
-
 html {
   font-family: 'Titillium Web', sans-serif;
 >>>>>>> develop
@@ -14,13 +12,11 @@ html {
 @use "./styles/partials/fonts" as *;
 @use "./styles/partials/mixins" as *;
 @use "./styles/partials/variables" as *;
-
 html {
     font-family: "Titillium Web", sans-serif;
 >>>>>>> develop
     box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
@@ -28,14 +24,12 @@ html {
     padding: 0;
 <<<<<<< HEAD
 }
-
 * {
     font-family: 'Titillium Web', sans-serif;
 }
 =======
     margin: 0;
 }
-
 article,
 aside,
 details,
@@ -49,31 +43,26 @@ nav,
 section {
     display: block;
 }
-
 button {
     border: 0;
     background: transparent;
     cursor: pointer;
 }
-
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f2f2f2;
+    background-color: #F2F2F2;
 }
-
 img {
     width: 100%;
     height: auto;
     outline: none;
 }
-
 a,
 a:visited {
     text-decoration: none;
 }
-
 .container {
     width: 90%;
     border-radius: 0.1875rem;
@@ -83,11 +72,9 @@ a:visited {
     padding: 0 0 1rem;
     background-color: $instock-white;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-
     @include tablet {
         padding: 0 2.25rem;
     }
-
     @include desktop {
         max-width: 80rem;
         margin: 0 auto;
