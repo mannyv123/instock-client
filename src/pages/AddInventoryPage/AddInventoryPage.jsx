@@ -39,11 +39,49 @@ function AddInventoryPage() {
             });
     }, []);
 
+    const isFormValid = () => {
+        if (
+            !values.item_name &&
+            !values.description &&
+            !values.category &&
+            !values.status &&
+            !values.quantity &&
+            !values.warehouse_id
+        ) {
+            console.log("everything is blank");
+            return false;
+        } else if (!values.item_name) {
+            console.log("item_name is blank");
+            return false;
+        } else if (!values.description) {
+            console.log("description is blank");
+            return false;
+        } else if (!values.category) {
+            console.log("category is blank");
+            return false;
+        } else if (!values.status) {
+            console.log("status is blank");
+            return false;
+        } else if (values.quantity === 0 && values.status === "In Stock") {
+            console.log("quantity is blank");
+            return false;
+        } else if (!values.warehouse_id) {
+            console.log("warehouse_id is blank");
+            return false;
+        } else {
+            return true;
+        }
+    };
+
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
+        //Form validation check
+        if (!isFormValid()) {
+            return console.error("Form is not valid");
+        }
+
         values.quantity = parseInt(values.quantity);
-        //add validation
 
         axios
             .post(`${apiUrl}/inventories`, values)
@@ -152,8 +190,8 @@ function AddInventoryPage() {
                                     type="text"
                                     name="quantity"
                                     id="quantity"
-                                    placeholder="0"
                                     onChange={handleInputChange}
+                                    value={values.quantity}
                                 />
                             </>
                         )}
