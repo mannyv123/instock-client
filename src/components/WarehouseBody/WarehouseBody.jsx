@@ -11,7 +11,15 @@ export const apiUrl = "http://localhost:5001/api";
 function WarehouseBody() {
     const [warehouses, setWarehouses] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [warehouse, setWarehouse] = useState();
+
     useEffect(() => {
+        getWarehouses();
+    }, []);
+
+    console.log(warehouses);
+
+    function getWarehouses() {
         axios
             .get(`${apiUrl}/warehouses`)
             .then((response) => {
@@ -20,9 +28,7 @@ function WarehouseBody() {
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
-
-    console.log(warehouses);
+    }
 
     return (
         <ul className="warehouse-table">
@@ -45,7 +51,9 @@ function WarehouseBody() {
                 </div>
                 <div className="warehouse-table__col warehouse-table__col--5">Actions</div>
             </li>
-
+            {isOpen && (
+                <DeleteModal setIsOpen={setIsOpen} warehouse={warehouse} getWarehouses={getWarehouses} />
+            )}
             {warehouses.map((warehouse) => (
                 <li className="warehouse-table__row" key={warehouse.id}>
                     <div className="warehouse-table__col warehouse-table__col--1" data-label="Warehouse">
@@ -68,17 +76,15 @@ function WarehouseBody() {
                         {warehouse.contact_email}
                     </div>
                     <div className="warehouse-table__col warehouse-table__col--5" data-label="Actions">
-                        <button onClick={() => setIsOpen(true)} className="warehouse-table__col--btn">
+                        <button
+                            onClick={() => {
+                                setIsOpen(true);
+                                setWarehouse(warehouse);
+                            }}
+                            className="warehouse-table__col--btn"
+                        >
                             <img src={deleteIcon} alt="delete" />
                         </button>
-                        {/* {isOpen && ( */}
-                        <DeleteModal
-                            isOpen={isOpen}
-                            setIsOpen={setIsOpen}
-                            warehouse={warehouse}
-                            warehouseId={warehouse.id}
-                        />
-                        {/* )} */}
 
                         {console.log(`warehouse name ${warehouse.warehouse_name}`)}
                         <button className="warehouse-table__col--btn">
