@@ -139,17 +139,25 @@ function AddInventoryPage() {
                                 <label htmlFor="outOfStock">Out of Stock</label>
                             </div>
                         </div>
-                        <label htmlFor="quantity" className="new-inventory__label">
-                            Quantity
-                        </label>
-                        <input
-                            className="new-inventory__input"
-                            type="text"
-                            name="quantity"
-                            id="quantity"
-                            placeholder="0"
-                            onChange={handleInputChange}
-                        />
+                        {/* Only renders quantity input on initial load or if status is set to In Stock */}
+                        {values.status === "Out of Stock" ? (
+                            ""
+                        ) : (
+                            <>
+                                <label htmlFor="quantity" className="new-inventory__label">
+                                    Quantity
+                                </label>
+                                <input
+                                    className="new-inventory__input"
+                                    type="text"
+                                    name="quantity"
+                                    id="quantity"
+                                    placeholder="0"
+                                    onChange={handleInputChange}
+                                />
+                            </>
+                        )}
+
                         <label className="new-inventory__label" htmlFor="warehouse_id">
                             Warehouse
                         </label>
