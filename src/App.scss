@@ -1,5 +1,11 @@
+@use './styles/partials/fonts' as *;
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+* {
+    font-family: 'Titillium Web', sans-serif;
 }
