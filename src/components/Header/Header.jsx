@@ -1,17 +1,19 @@
-import React from 'react'
-import './Header.scss'
-import logo from '../../assets/logo/InStock-Logo_2x.png'
+import React from "react";
+import "./Header.scss";
+import logo from "../../assets/logos/InStock-Logo_2x.png";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
     <div className='header'>
         <img className='header__logo' src={logo} alt="logo" />
         <div className="header__container">
-            <button className='header__button'>Warehouses</button>
-            <button className='header__button'>Inventory</button>
+            <NavLink className='header__button' to='/warehouses'>Warehouses
+            </NavLink>
+            <NavLink className='header__button' to='/inventory'>Inventory
+            </NavLink>
         </div>
-    </div>
-  )
+    );
 }
 
-export default Header
+export default Header;
