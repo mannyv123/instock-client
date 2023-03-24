@@ -32,6 +32,7 @@ section {
 button {
     border: 0;
     background: transparent;
+    cursor: pointer;
 }
 
 body {
@@ -58,7 +59,7 @@ a:visited {
     height: auto;
     margin-top: -1rem;
     margin-inline: auto;
-    padding: 0 1rem 1rem;
+    padding: 0 0 1rem;
     background-color: $instock-white;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
