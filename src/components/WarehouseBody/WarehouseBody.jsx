@@ -4,6 +4,7 @@ import editIcon from '../../assets/icons/edit-24px.svg';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import WarehouseHeader from '../WarehouseHeader/WarehouseHeader';
 export const apiUrl = 'http://localhost:5005/api';
 
 function WarehouseBody() {
@@ -22,43 +23,28 @@ function WarehouseBody() {
 
     return (
         <ul className='warehouse-table'>
-            <li className='warehouse-table__header'>
-                <div className='warehouse-table__col warehouse-table__col--1'>
-                    Warehouse
-                    <button className='sort'></button>
-                </div>
-                <div className='warehouse-table__col warehouse-table__col--2'>
-                    Address
-                    <button className='sort'></button>
-                </div>
-                <div className='warehouse-table__col warehouse-table__col--3'>
-                    Contact Name
-                    <button className='sort'></button>
-                </div>
-                <div className='warehouse-table__col warehouse-table__col--4'>
-                    Contact Information
-                    <button className='sort'></button>
-                </div>
-                <div className='warehouse-table__col warehouse-table__col--5'>Actions</div>
-            </li>
-
+            <WarehouseHeader />
             {warehouses.map((warehouse) => (
                 <li className='warehouse-table__row' key={warehouse.id}>
                     <div className='warehouse-table__col warehouse-table__col--1' data-label='Warehouse'>
                         <Link to={`/warehouses/${warehouse.id}`} className='warehouse-table__col--title'>
-                            {warehouse.warehouse_name}
+                            <span className='warehouse-table__col--span'>{warehouse.warehouse_name}</span>
                         </Link>
                     </div>
                     <div className='warehouse-table__col warehouse-table__col--2' data-label='Address'>
-                        {warehouse.address}, {warehouse.city}, {warehouse.country}
+                        <span className='warehouse-table__col--span'>
+                            {warehouse.address}, {warehouse.city}, {warehouse.country}
+                        </span>
                     </div>
                     <div className='warehouse-table__col warehouse-table__col--3' data-label='Contact Name'>
-                        {warehouse.contact_name}
+                        <span className='warehouse-table__col--span'>{warehouse.contact_name}</span>
                     </div>
                     <div className='warehouse-table__col warehouse-table__col--4' data-label='Contact Information'>
-                        {warehouse.contact_phone}
-                        <br />
-                        {warehouse.contact_email}
+                        <span className='warehouse-table__col--span'>
+                            {warehouse.contact_phone}
+                            <br />
+                            {warehouse.contact_email}
+                        </span>
                     </div>
                     <div className='warehouse-table__col warehouse-table__col--5' data-label='Actions'>
                         <button className='warehouse-table__col--btn'>
