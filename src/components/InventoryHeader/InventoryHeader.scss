@@ -1,0 +1,135 @@
+<<<<<<< HEAD
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+
+
+.search-header {
+=======
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+
+.warehouse-header {
+>>>>>>> develop
+    padding: 0.8125rem 0 0;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+<<<<<<< HEAD
+        padding: 1rem 0 0.9375rem;
+=======
+        padding: 1rem 0 1.5rem;
+>>>>>>> develop
+        justify-content: space-around;
+    }
+
+    &__title{
+<<<<<<< HEAD
+        font-size: 1.75rem;
+=======
+        font-size: $fs-mobile-pageHeader;
+        margin-top: 1rem;
+
+        @include tablet{
+            margin-top: 0;
+        }
+>>>>>>> develop
+    }
+
+    &__form {
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+
+        @include tablet {
+            flex-direction: row;
+            margin-left: auto;
+            flex-wrap: nowrap;
+            height: auto;
+            gap: 1rem;
+        }
+    }
+
+    &__input {
+        flex: 1;
+        border: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 2.3rem;
+<<<<<<< HEAD
+        outline: solid 0.0625rem #BDC5D5;
+        border-radius: 1.25rem;
+        background: url("../../assets/icons/search-24px.svg") no-repeat;
+        background-position: right 1rem center;
+//   padding: 10px 40px;
+
+        &:focus {
+            outline: solid 0.125rem grey;
+        }
+
+        &::placeholder {
+            color: #5C667E;
+=======
+        outline: solid 0.0625rem $instock-cloud;
+        border-radius: 1.25rem;
+        background: url('../../assets/icons/search-24px.svg') no-repeat;
+        background-position: right 1rem center;
+
+        &:focus {
+            outline: solid 0.125rem $instock-indigo;
+        }
+
+        &::placeholder {
+            color: $instock-slate;
+            font-size: $fs-mobile-buttons;
+>>>>>>> develop
+        }
+
+        @include tablet {
+            height: 2.6rem;
+            flex: 0 0 18rem;
+        }
+    }
+    &__button {
+        flex-basis: 100%;
+        height: 2.5rem;
+        margin-top: -1rem;
+        border-radius: 1.25rem;
+        color: #ffffff;
+<<<<<<< HEAD
+        font-weight: 400;
+        background: $instock-indigo;
+        cursor: pointer;
+        text-align: center;
+        font-size: 0.85rem;
+=======
+        font-weight: $fw-semi-bold;
+        background: $instock-indigo;
+        cursor: pointer;
+        text-align: center;
+        font-size: $fs-mobile-buttons;
+>>>>>>> develop
+        border: 0;
+
+        @include tablet {
+            margin-top: 0;
+            flex-basis: 11rem;
+            height: 2.6rem;
+        }
+
+        &:hover {
+<<<<<<< HEAD
+            background-color: grey;
+=======
+            background-color: $instock-black;
+>>>>>>> develop
+        }
+    }
+}
