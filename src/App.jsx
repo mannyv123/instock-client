@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
 import WarehouseDetails from './pages/WarehouseDetails/WarehouseDetails';
+import InventoryItem from './components/InventoryItem/InventoryItem';
 
 function App() {
     return (
