@@ -13,7 +13,8 @@ function Header() {
             <NavLink className='header__button' to='/inventory'>Inventory
             </NavLink>
         </div>
-    );
+    </div>
+    )
 }
 
-export default Header;
+export default Header
