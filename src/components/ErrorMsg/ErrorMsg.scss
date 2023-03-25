@@ -1,0 +1,9 @@
+.error-msg {
+    display: flex;
+    color: #c94515;
+
+    &__icon {
+        width: 1rem;
+        margin-right: 0.3125rem;
+    }
+}

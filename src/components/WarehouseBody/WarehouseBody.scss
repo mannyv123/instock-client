@@ -1,33 +1,32 @@
-@use '../../styles/partials/fonts' as *;
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
-
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .warehouse-table {
-    padding: 0;
-    border-top: solid 1px $instock-cloud;
+  padding: 0;
+  border-top: solid 1px $instock-cloud;
 
-    @include tablet{
-        border-top: none;
+  @include tablet {
+    border-top: none;
+  }
+
+  &__header {
+    display: none;
+    list-style: none;
+    background-color: $instock-light-grey;
+
+    @include tablet {
+      display: block;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $instock-slate;
+      gap: 1rem;
+      padding: 0 0.5rem;
     }
-
-    &__header {
-        display: none;
-        list-style: none;
-        background-color: $instock-light-grey;
-
-        @include tablet {
-            display: block;
-            display: flex;
-            justify-content: space-between;
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 600;
-            color: $instock-slate;
-            gap: 1rem;
-            padding: 0 0.5rem;
-        }
-    }
+  }
 
     &__col{
         
@@ -163,12 +162,12 @@
         
     // }
 
-    &__row {
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        font-size: 0.6rem;
-        border-bottom: solid 1px $instock-cloud;
+  &__row {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.6rem;
+    border-bottom: solid 1px $instock-cloud;
 
         @include tablet {
             display: flex;
@@ -178,24 +177,23 @@
             padding: 1.5rem 0.5rem;
             font-size: $fs-desktop-bodyMedium;
 
-            &:hover {
-                background: rgba(46, 102, 230, 0.07);
-                transition: all 0.2s;
-            }
-        }
+      &:hover {
+        background: rgba(46, 102, 230, 0.07);
+        transition: all 0.2s;
+      }
     }
+  }
 }
 
-.sort{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        cursor: pointer;
+.sort {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 
-        &::after{
-            content: url(../../assets/icons/sort-24px.svg);
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-    }
+  &::after {
+    content: url(../../assets/icons/sort-24px.svg);
+    display: block;
+    margin-top: 0.3rem;
+  }
+}

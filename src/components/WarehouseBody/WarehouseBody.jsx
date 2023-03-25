@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import WarehouseHeader from '../WarehouseHeader/WarehouseHeader';
-export const apiUrl = 'http://localhost:5001/api';
+export const apiUrl = 'http://localhost:5005/api';
 
 function WarehouseBody() {
     const [warehouses, setWarehouses] = useState([]);
