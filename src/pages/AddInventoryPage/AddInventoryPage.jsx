@@ -20,6 +20,15 @@ function AddInventoryPage() {
     const [values, setValues] = useState(initialValues);
     const navigate = useNavigate();
 
+    const errorStates = {
+        item_name: false,
+        description: false,
+        category: false,
+        status: false,
+        quantity: false,
+        warehouse_id: false,
+    };
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 
