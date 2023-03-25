@@ -1,4 +1,5 @@
-import "./InventoryEdit.scss";
+// GJ's work
+import "./EditInventoryPage.scss";
 import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
