@@ -11,6 +11,8 @@ import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import EditWarehousesPage from "./pages/EditWarehousesPage/EditWarehousesPage";
 import Footer from "./components/Footer/Footer";
 
+export const apiUrl = process.env.REACT_APP_API_URL;
+
 function App() {
     return (
         <BrowserRouter>

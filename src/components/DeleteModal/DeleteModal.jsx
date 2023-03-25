@@ -2,8 +2,7 @@
 import "./DeleteModal.scss";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
-
-const API_URL = "http://localhost:5001/api";
+import { apiUrl } from "../../App";
 
 function DeleteModal({ setIsOpen, warehouse, getWarehouses }) {
     const type = "warehouse";
@@ -12,7 +11,7 @@ function DeleteModal({ setIsOpen, warehouse, getWarehouses }) {
     const handleWarehouseDelete = () => {
         console.log("DELETE");
         axios
-            .delete(`${API_URL}/warehouses/${warehouse.id}`)
+            .delete(`${apiUrl}/warehouses/${warehouse.id}`)
             .then(() => {
                 console.log(`Warehouse with ID ${warehouse.id} successfully deleted`);
                 setIsOpen(false);
