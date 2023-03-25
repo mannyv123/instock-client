@@ -23,7 +23,7 @@
     }
 
     &__sub-header {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
@@ -31,9 +31,14 @@
     &__label {
         font-size: 0.8125rem;
         margin-bottom: 0.25rem;
+        margin-top: 1rem;
 
         &--status {
             width: 100%;
+        }
+
+        &--error {
+            color: #c94515;
         }
     }
 
@@ -42,7 +47,10 @@
         height: 2.25rem;
         padding: 0 1rem;
         border: 0.0625rem solid #bdc5d5;
-        margin-bottom: 1rem;
+
+        &--error {
+            border-color: #c94515;
+        }
     }
 
     &__description {
@@ -51,7 +59,10 @@
         border: 0.0625rem solid #bdc5d5;
         resize: none;
         height: 7.5rem;
-        margin-bottom: 1rem;
+
+        &--error {
+            border-color: #c94515;
+        }
     }
 
     &__dropdown {
@@ -64,6 +75,10 @@
         background-repeat: no-repeat;
         background-position: center right 0.5rem;
         height: 2.25rem;
+
+        &--error {
+            border-color: #c94515;
+        }
     }
 
     &__item-avail {
@@ -75,7 +90,6 @@
     &__status-container {
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: 1rem;
     }
 
     &__radio {
@@ -91,6 +105,10 @@
         height: 1rem;
 
         margin-right: 0.5rem;
+
+        &--error {
+            color: #c94515;
+        }
     }
 
     &__form-actions {
