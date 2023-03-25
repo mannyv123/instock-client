@@ -1,4 +1,5 @@
-import "./WarehousesAdd.scss";
+// GJ's work
+import "./AddWarehousesPage.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
