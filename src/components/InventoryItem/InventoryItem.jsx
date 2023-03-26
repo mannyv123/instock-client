@@ -3,63 +3,53 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './InventoryItem.scss';
+import iconReturn from '../../assets/icons/arrow_back-24px.svg';
 
-const api = process.env.REACT_APP_API_URL;
+const apiUrl = 'http://localhost:5005';
 
 function InventoryItem() {
-    const [selectedItem, setSelectedItem] = useState({});
-    const { id } = useParams();
-
-    useEffect(() => {
-        if (id) {
-            getInventoryItem(id);
-        }
-    }, [id]);
-
-    function getInventoryItem(id) {
-        axios
-            .get(`${api}/inventories/${id}`)
-            .then((res) => {
-                setSelectedItem(res.data);
-            })
-            .catch((err) => {
-                console.log('err: ', err);
-            });
-    }
-
+    const [selectedInventory, setSelectedInventory] = useState({});
     return (
-        <div className='container'>
-            <div className='inventory-item'>
-                {Object.keys(selectedItem).length > 0 && (
-                    <div>
-                        <div className='inventory-item__header'>
-                            <p className='inventory-item__title'>{selectedItem[0].item_name}</p>
-                            <button>Edit</button>
-                        </div>
-                        <section className='details-grid'>
-                            <div className='grid-item description'>
-                                <h4>item description:</h4>
-                                <p>{selectedItem[0].description}</p>
-                            </div>
-                            <div className='grid-item category'>
-                                <h4>category:</h4>
-                                <p>{selectedItem[0].category}</p>
-                            </div>
-                            <div className='grid-item status'>
-                                <h4>status:</h4>
-                                <p>{selectedItem[0].status}</p>
-                            </div>
-                            <div className='grid-item quantity'>
-                                <h4>quantity:</h4>
-                                <p>{selectedItem[0].quantity}</p>
-                            </div>
-                            <div className='grid-item warehouse'>
-                                <h4>warehouse:</h4>
-                                <p>{selectedItem[0].warehouse_id}</p>
-                            </div>
-                        </section>
+        <div className='inventory-item'>
+            <div>
+                <div class='warehouse-header'>
+                    <div class='warehouse-header__title'>
+                        <button class='warehouse-header__comeback'>
+                            <img src={iconReturn} alt='back' />
+                        </button>
+                        <h1 class='warehouse-header__text'>Televisor</h1>
                     </div>
-                )}
+                    <button class='warehouse-header__button' data-label='Edit'></button>
+                </div>
+
+                <section className='details-grid'>
+                    <div className='grid-item description'>
+                        <h4 className='grid-item__title'>item description:</h4>
+                        <p className='grid-item__text'>This 50", 4K LED TV provides a crystal-clear picture and vivid colors.</p>
+                    </div>
+                    <div className='grid-item category'>
+                        <h4 className='grid-item__title'>Category:</h4>
+                        <p className='grid-item__text'>Electrics</p>
+                    </div>
+                    <div className='grid-item status'>
+                        <h4 className='grid-item__title'>Status:</h4>
+                        <p className='grid-item__text'>
+                            {selectedInventory.status === 'success' ? (
+                                <span className='grid-item__text--success'>{selectedInventory.status}</span>
+                            ) : (
+                                <span className='grid-item__text--failed'>{selectedInventory.status}</span>
+                            )}
+                        </p>
+                    </div>
+                    <div className='grid-item quantity'>
+                        <h4 className='grid-item__title'>Quantity:</h4>
+                        <p className='grid-item__text'>500</p>
+                    </div>
+                    <div className='grid-item warehouse'>
+                        <h4 className='grid-item__title'>Warehouse:</h4>
+                        <p className='grid-item__text'>Manhattan</p>
+                    </div>
+                </section>
             </div>
         </div>
     );

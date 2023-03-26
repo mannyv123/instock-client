@@ -6,15 +6,18 @@
 .details-grid {
     display: grid;
     gap: 1rem;
+    row-gap: 1rem;
+    padding: 1rem 1.8rem;
     grid-template-rows: 1fr 1fr;
-    border: solid 1px red;
     grid-template-areas:
       "description description"
       "category category"
       "status quantity"
       "warehouse warehouse";
   
-      @media screen and (min-width: 768px) {
+      @include tablet {
+        row-gap: 2rem;
+        padding: 2.5rem;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-template-areas:
@@ -22,42 +25,80 @@
           "category status quantity warehouse";
       }
   }
+
+  .grid-item{
+
+    &__title{
+      font-size: $fs-mobile-bodySmall;
+      text-transform: uppercase;
+      color: $instock-slate;
+    }
+
+    &__text{
+      font-size: $fs-mobile-bodyMedium;
+
+      &--success, &--failed{
+        background-color: rgba($instock-green, 0.2);
+        color: $instock-green;
+        width: 4rem;
+        text-align: center;
+        padding: 0.2rem;
+        border-radius: 1rem;
+        font-size: $fs-mobile-bodySmall;
+        text-transform: uppercase;
+        font-weight: $fw-semi-bold;
+        margin-top: 0.3rem;
+        display: block;
+    }
+    
+    &--failed{
+        background-color: rgba($instock-red, 0.2);
+        width: 5rem;
+        text-align: center;
+        padding: 0.4rem;
+        border-radius: 1rem;
+    }
+    }
+  }
+
   
   .description {
-    background-color: lightgreen;
     grid-area: description;
   
-    @media screen and (min-width: 768px) {
+    @include tablet {
       grid-column: 1 / span 2;
       grid-row: 1 / span 1;
+      border-right: solid 1px red;
+      padding-right: 1rem;
     }
   }
   
   .category {
-    background-color: aquamarine;
     grid-area: category;
   
-    @media screen and (min-width: 768px) {
+    @include tablet {
       grid-column: 1 / span 2;
       grid-row: 2 / span 1;
+      border-right: solid 1px red;
+      padding-right: 1rem;
     }
   }
   
   .status {
-    background-color: lightblue;
     grid-area: status;
   
-    @media screen and (min-width: 768px) { 
+    @include tablet { 
       grid-row: 1 / span 1;
       grid-column: 3 / span 1;
+      padding-left: 1.5rem;
+
     }
   }
   
   .quantity {
-    background-color: lightcoral;
     grid-area: quantity;
   
-    @media screen and (min-width: 768px) { 
+    @include tablet { 
       grid-row: 1 / span 1;
       grid-column: 4 / span 1;
     }
@@ -65,12 +106,14 @@
   
   
   .warehouse {
-    background-color: lightsalmon;
     grid-area: warehouse;
+    margin-top: 1rem;
   
-    @media screen and (min-width: 768px) { 
+    @include tablet { 
       grid-column: 3 / span 2;
       grid-row: 2 / span 1;
+      margin-top: 0;
+      padding-left: 1.5rem;
     }
   }
   
