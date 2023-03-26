@@ -2,7 +2,7 @@ import "./AddInventoryPage.scss";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
 
 const apiUrl = "http://localhost:5001/api";
@@ -113,6 +113,7 @@ function AddInventoryPage() {
             .post(`${apiUrl}/inventories`, values)
             .then((response) => {
                 console.log(response);
+                navigate("/inventory");
             })
             .catch((error) => {
                 console.error(error);
@@ -126,14 +127,12 @@ function AddInventoryPage() {
         <section className="container">
             <section className="new-inventory">
                 <div className="new-inventory__header">
-                    <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    <Link className="new-inventory__back-link" to="/inventory">
+                        <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    </Link>
                     <h1 className="new-inventory__title">Add New Inventory Item</h1>
                 </div>
-                <form
-                    action="submit"
-                    className="new-inventory__form"
-                    onSubmit={(event) => handleFormSubmit(event)}
-                >
+                <form action="submit" onSubmit={(event) => handleFormSubmit(event)}>
                     <div className="new-inventory__item-details">
                         <h2 className="new-inventory__sub-header">Item Details</h2>
                         <label className="new-inventory__label" htmlFor="item_name">
@@ -199,7 +198,9 @@ function AddInventoryPage() {
                                     onChange={handleInputChange}
                                 />
                                 <label
-                                    className={!isInvalidStatus ? "" : "new-inventory__status-input--error"}
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
                                     htmlFor="inStock"
                                 >
                                     In Stock
@@ -215,7 +216,9 @@ function AddInventoryPage() {
                                     onChange={handleInputChange}
                                 />
                                 <label
-                                    className={!isInvalidStatus ? "" : "new-inventory__status-input--error"}
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
                                     htmlFor="outOfStock"
                                 >
                                     Out of Stock

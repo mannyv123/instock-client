@@ -8,7 +8,7 @@ import Inventory from './pages/Inventory/Inventory';
 import InventoryItem from './components/InventoryItem/InventoryItem';
 import AddInventoryPage from './pages/AddInventoryPage/AddInventoryPage';
 import EditInventoryPage from './pages/EditInventoryPage/EditInventoryPage';
-// import EditWarehousesPage from './pages/EditWarehousesPage/EditWarehousesPage';
+import EditWarehousesPage from './pages/EditWarehousesPage/EditWarehousesPage';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
                     {/* GJ's work below */}
                     <Route path='/warehouses/add' element={<AddWarehousesPage />} />
                     {/* Seyon's work below */}
-                    {/* <Route path='/warehouses/edit' element={<EditWarehousesPage />} /> */}
+                    <Route path='/warehouses/edit' element={<EditWarehousesPage />} />
                     {/* Seyon's work below */}
                     <Route path='/inventory' element={<Inventory />} />
                     {/* Felipe's work below */}
