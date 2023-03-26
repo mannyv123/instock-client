@@ -18,7 +18,7 @@ const initialValues = {
 };
 
 function WarehousesAdd() {
-  const api_url = "http://localhost:8000";
+  const api_url = process.env.REACT_APP_API_URL;
 
   const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
@@ -69,7 +69,7 @@ function WarehousesAdd() {
 
   async function postNewWarehouse() {
     try {
-      const response = await axios.post(`${api_url}/api/warehouses`, warehouse);
+      const response = await axios.post(`${api_url}/warehouses`, warehouse);
       console.log(response);
     } catch (error) {
       console.log(error);
