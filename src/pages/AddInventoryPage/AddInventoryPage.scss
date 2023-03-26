@@ -1,3 +1,6 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .new-inventory {
     &__header {
         display: flex;
@@ -6,6 +9,10 @@
         font-size: 1.75rem;
         line-height: 2.25rem;
         gap: 0.75rem;
+
+        @include tablet {
+            padding: 2rem 2rem 1.3125rem;
+        }
     }
 
     &__back {
@@ -17,17 +24,39 @@
         height: 2rem;
     }
 
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
     &__item-details {
         display: flex;
         flex-direction: column;
         border-bottom: 0.0625rem solid #bdc5d5;
         padding: 1.5rem;
+
+        @include tablet {
+            width: 50%;
+            border-bottom: none;
+            padding: 0 2rem;
+            margin: 1.5rem 0;
+            border-right: 0.0625rem solid #bdc5d5;
+        }
     }
 
     &__sub-header {
         margin-bottom: 0.5rem;
         font-size: 1.25rem;
         line-height: 1.75rem;
+
+        @include tablet {
+            font-size: 1.5rem;
+        }
     }
 
     &__label {
@@ -43,6 +72,10 @@
         &--error {
             color: #c94515;
         }
+
+        @include tablet {
+            font-size: 0.875rem;
+        }
     }
 
     &__input {
@@ -55,6 +88,14 @@
 
         &--error {
             border-color: #c94515;
+        }
+
+        @include tablet {
+            font-size: 0.875rem;
+        }
+
+        @include desktop {
+            width: 7.625rem;
         }
     }
 
@@ -69,6 +110,10 @@
 
         &--error {
             border-color: #c94515;
+        }
+
+        @include tablet {
+            font-size: 0.875rem;
         }
     }
 
@@ -88,12 +133,21 @@
         &--error {
             border-color: #c94515;
         }
+
+        @include tablet {
+            font-size: 0.875rem;
+        }
     }
 
     &__item-avail {
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
+
+        @include tablet {
+            width: 50%;
+            padding: 1.5rem 2rem;
+        }
     }
 
     &__status-container {
@@ -123,6 +177,10 @@
         &--error {
             color: #c94515;
         }
+
+        @include tablet {
+            font-size: 0.875rem;
+        }
     }
 
     &__form-actions {
@@ -131,6 +189,12 @@
         padding: 1rem 1.5rem;
         gap: 1rem;
         background-color: rgba($color: #f7f8f9, $alpha: 0.7);
+
+        @include tablet {
+            width: 100%;
+            justify-content: flex-end;
+            padding: 1rem 2rem;
+        }
     }
 
     &__btn {
@@ -140,6 +204,11 @@
         font-weight: 600;
         font-size: 0.875rem;
 
+        @include tablet {
+            height: 2.375rem;
+            flex: none;
+        }
+
         &--cancel {
             border: 0.0625rem solid #bdc5d5;
             color: #5c667e;
@@ -147,6 +216,10 @@
             &:hover {
                 border-color: #2e66e5;
                 color: #2e66e5;
+            }
+
+            @include tablet {
+                width: 4.5rem;
             }
         }
 
@@ -156,6 +229,10 @@
 
             &:hover {
                 background-color: #232940;
+            }
+
+            @include tablet {
+                width: 6.125rem;
             }
         }
     }

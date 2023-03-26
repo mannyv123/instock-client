@@ -124,7 +124,11 @@ function AddInventoryPage() {
                     </Link>
                     <h1 className="new-inventory__title">Add New Inventory Item</h1>
                 </div>
-                <form action="submit" onSubmit={(event) => handleFormSubmit(event)}>
+                <form
+                    className="new-inventory__form"
+                    action="submit"
+                    onSubmit={(event) => handleFormSubmit(event)}
+                >
                     <div className="new-inventory__item-details">
                         <h2 className="new-inventory__sub-header">Item Details</h2>
                         <label className="new-inventory__label" htmlFor="item_name">
@@ -227,7 +231,7 @@ function AddInventoryPage() {
                                     Quantity
                                 </label>
                                 <input
-                                    className={`new-inventory__input ${
+                                    className={`new-inventory__input new-inventory__input--quantity ${
                                         !isInvalidQuantity ? "" : "new-inventory__input--error"
                                     }`}
                                     type="text"

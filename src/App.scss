@@ -67,10 +67,6 @@ a:visited {
     background-color: $instock-white;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
-    @include tablet {
-        padding: 0 2.25rem;
-    }
-
     @include desktop {
         max-width: 80rem;
         margin: 0 auto;
