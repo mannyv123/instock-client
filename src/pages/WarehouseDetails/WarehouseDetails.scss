@@ -2,6 +2,7 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
 .warehouse-info {
   display: flex;
   flex-direction: column;

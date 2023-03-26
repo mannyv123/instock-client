@@ -1,13 +1,15 @@
+// GJ's work
 import "./WarehouseDetails.scss";
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import iconReturn from "../../assets/icons/arrow_back-24px.svg";
-import DetailsBody from "../DetailsBody/DetailsBody";
+import DetailsBody from "../../components/DetailsBody/DetailsBody";
+import { Link } from "react-router-dom";
 
 function WarehouseDetails() {
-  const api_url = "http://localhost:8000";
+  const api_url = process.env.REACT_APP_API_URL;
 
   const navigate = useNavigate();
 
@@ -18,7 +20,7 @@ function WarehouseDetails() {
   const getWarehouseDetails = useCallback(
     (id) => {
       if (id) {
-        axios.get(`${api_url}/api/warehouses/${id}`).then((response) => {
+        axios.get(`${api_url}/warehouses/${id}`).then((response) => {
           console.log(response.data);
           // we are calling setWarehouse here.
           setWarehouse(response.data);
@@ -40,14 +42,19 @@ function WarehouseDetails() {
 
   return (
     <div className="container">
-      <div class="warehouse-header">
-        <div class="warehouse-header__title">
-          <button class="warehouse-header__comeback" onClick={handleOnBack}>
+      <div className="warehouse-header">
+        <div className="warehouse-header__title">
+          <button className="warehouse-header__comeback" onClick={handleOnBack}>
             <img src={iconReturn} alt="back" />
           </button>
-          <h1 class="warehouse-header__text">{warehouse.warehouse_name}</h1>
+          <h1 className="warehouse-header__text">{warehouse.warehouse_name}</h1>
         </div>
-        <button class="warehouse-header__button" data-label="Edit"></button>
+        <Link
+          // This links to edit page
+          to={`/warehouse/${warehouse.id}/edit`}
+          className="warehouse-header__button"
+          data-label="Edit"
+        ></Link>
       </div>
       <section className="warehouse-info">
         <div className="warehouse-info__address">
@@ -79,5 +86,4 @@ function WarehouseDetails() {
     </div>
   );
 }
-
 export default WarehouseDetails;
