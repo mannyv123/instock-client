@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import iconReturn from "../../assets/icons/arrow_back-24px.svg";
+import DetailsBody from "../DetailsBody/DetailsBody";
 
 function WarehouseDetails() {
   const api_url = "http://localhost:8000";
@@ -37,32 +39,43 @@ function WarehouseDetails() {
   }
 
   return (
-    <div>
-      <div>
-        <button onClick={handleOnBack}>Arrow Back</button>
-        <h1>{warehouse.warehouse_name}</h1>
-        <button>Edit</button>
+    <div className="container">
+      <div class="warehouse-header">
+        <div class="warehouse-header__title">
+          <button class="warehouse-header__comeback" onClick={handleOnBack}>
+            <img src={iconReturn} alt="back" />
+          </button>
+          <h1 class="warehouse-header__text">{warehouse.warehouse_name}</h1>
+        </div>
+        <button class="warehouse-header__button" data-label="Edit"></button>
       </div>
-      {/* display flex row on first div */}
-      <div>
-        <div>
-          <p>Warehouse Address:</p>
-          <p>{warehouse.address}</p>
-          <p>
-            {warehouse.city}, {warehouse.country}
-          </p>
+      <section className="warehouse-info">
+        <div className="warehouse-info__address">
+          <h3 className="warehouse-info__address--title">Warehouse Address:</h3>
+          <p className="warehouse-info__address--text">{warehouse.address}</p>
         </div>
-        <div>
-          <p>Contact Name:</p>
-          <p>{warehouse.contact_name}</p>
-          <p>{warehouse.contact_position}</p>
+        <div className="warehouse-row">
+          <div className="warehouse-row__contact">
+            <h4 className="warehouse-row__contact--title">Contact Name:</h4>
+            <p className="warehouse-row__contact--text">
+              {warehouse.contact_name}
+              <br />
+              {warehouse.contact_position}
+            </p>
+          </div>
+          <div className="warehouse-row__contact">
+            <h4 className="warehouse-row__contact--title">
+              Contact information:
+            </h4>
+            <p className="warehouse-row__contact--text">
+              {warehouse.contact_phone}
+              <br />
+              {warehouse.contact_email}
+            </p>
+          </div>
         </div>
-        <div>
-          <p>Contact Information:</p>
-          <p>{warehouse.contact_phone}</p>
-          <p>{warehouse.contact_email}</p>
-        </div>
-      </div>
+      </section>
+      <DetailsBody />
     </div>
   );
 }
