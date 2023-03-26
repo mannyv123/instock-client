@@ -26,12 +26,11 @@ function AddInventoryPage() {
     const [isInvalidQuantity, setIsInvalidQuantity] = useState(false);
     const [isInvalidWarehouse, setIsInvalidWarehouse] = useState(false);
 
+    //Handles updating input values
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-
         setValues({ ...values, [name]: value });
     };
-    console.log(values);
 
     //Get current warehouses for dropdown selection
     useEffect(() => {
@@ -61,7 +60,6 @@ function AddInventoryPage() {
             !values.quantity &&
             !values.warehouse_id
         ) {
-            console.log("everything is blank");
             setIsInvalidName(true);
             setIsInvalidDesc(true);
             setIsInvalidCategory(true);
@@ -70,27 +68,21 @@ function AddInventoryPage() {
             setIsInvalidWarehouse(true);
             return false;
         } else if (!values.item_name) {
-            console.log("item_name is blank");
             setIsInvalidName(true);
             return false;
         } else if (!values.description) {
-            console.log("description is blank");
             setIsInvalidDesc(true);
             return false;
         } else if (!values.category) {
-            console.log("category is blank");
             setIsInvalidCategory(true);
             return false;
         } else if (!values.status) {
-            console.log("status is blank");
             setIsInvalidStatus(true);
             return false;
         } else if (values.quantity === 0 && values.status === "In Stock") {
-            console.log("quantity is blank");
             setIsInvalidQuantity(true);
             return false;
         } else if (!values.warehouse_id) {
-            console.log("warehouse_id is blank");
             setIsInvalidWarehouse(true);
             return false;
         } else {
@@ -98,6 +90,7 @@ function AddInventoryPage() {
         }
     };
 
+    //Function for Form Submission
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
@@ -110,8 +103,7 @@ function AddInventoryPage() {
 
         axios
             .post(`${apiUrl}/inventories`, values)
-            .then((response) => {
-                console.log(response);
+            .then(() => {
                 navigate("/inventory");
             })
             .catch((error) => {
@@ -131,7 +123,11 @@ function AddInventoryPage() {
                     </Link>
                     <h1 className="new-inventory__title">Add New Inventory Item</h1>
                 </div>
-                <form action="submit" onSubmit={(event) => handleFormSubmit(event)}>
+                <form
+                    className="new-inventory__form"
+                    action="submit"
+                    onSubmit={(event) => handleFormSubmit(event)}
+                >
                     <div className="new-inventory__item-details">
                         <h2 className="new-inventory__sub-header">Item Details</h2>
                         <label className="new-inventory__label" htmlFor="item_name">
@@ -234,7 +230,7 @@ function AddInventoryPage() {
                                     Quantity
                                 </label>
                                 <input
-                                    className={`new-inventory__input ${
+                                    className={`new-inventory__input new-inventory__input--quantity ${
                                         !isInvalidQuantity ? "" : "new-inventory__input--error"
                                     }`}
                                     type="text"

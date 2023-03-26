@@ -15,10 +15,6 @@ html {
     margin: 0;
 }
 
-* {
-    font-family: "Titillium Web", sans-serif;
-}
-
 article,
 aside,
 details,
@@ -43,11 +39,11 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f2f2f2;
+    background-color: $instock-light-grey;
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     outline: none;
 }
@@ -68,11 +64,10 @@ a:visited {
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
     @include tablet {
-        padding: 0 2.25rem;
+        margin: -5.35rem auto 0;
     }
 
     @include desktop {
         max-width: 80rem;
-        margin: 0 auto;
     }
 }
