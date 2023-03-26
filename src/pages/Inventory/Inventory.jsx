@@ -1,11 +1,9 @@
 import InventoryItem from "../../components/InventoryItem/InventoryItem";
 import "./Inventory.scss";
 import InventoryList from "../../components/InventoryList/InventoryList";
-
+import { apiUrl } from "../../App";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-const api = process.env.REACT_APP_API_URL;
 
 // ------JIRA TICKET #J2VT1-20 -SEYON -------------------------------------
 function Inventory() {
@@ -17,7 +15,7 @@ function Inventory() {
 
     function generateInventoryItems() {
         axios
-            .get(`${api}/inventories`)
+            .get(`${apiUrl}/inventories`)
             .then((res) => {
                 setInventoryItems(res.data);
             })
