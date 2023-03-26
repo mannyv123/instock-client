@@ -33,29 +33,29 @@ function InventoryItem() {
                 {Object.keys(selectedItem).length > 0 && (
                     <div>
                         <div className='inventory-item__header'>
-                            <p className='inventory-item__title'>{selectedItem[0].item_name}</p>
+                            <p className='inventory-item__title'>{selectedItem.item_name}</p>
                             <button>Edit</button>
                         </div>
                         <section className='details-grid'>
                             <div className='grid-item description'>
                                 <h4>item description:</h4>
-                                <p>{selectedItem[0].description}</p>
+                                <p>{selectedItem.description}</p>
                             </div>
                             <div className='grid-item category'>
                                 <h4>category:</h4>
-                                <p>{selectedItem[0].category}</p>
+                                <p>{selectedItem.category}</p>
                             </div>
                             <div className='grid-item status'>
                                 <h4>status:</h4>
-                                <p>{selectedItem[0].status}</p>
+                                <p>{selectedItem.status}</p>
                             </div>
                             <div className='grid-item quantity'>
                                 <h4>quantity:</h4>
-                                <p>{selectedItem[0].quantity}</p>
+                                <p>{selectedItem.quantity}</p>
                             </div>
                             <div className='grid-item warehouse'>
                                 <h4>warehouse:</h4>
-                                <p>{selectedItem[0].warehouse_id}</p>
+                                <p>{selectedItem.warehouse_id}</p>
                             </div>
                         </section>
                     </div>
