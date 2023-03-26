@@ -1,9 +1,11 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import "./InventoryItem.scss";
-import { apiUrl } from "../../App";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './InventoryItem.scss';
+import iconReturn from '../../assets/icons/arrow_back-24px.svg';
+
+const apiUrl = 'http://localhost:5005';
 
 function InventoryItem() {
     const [selectedItem, setSelectedItem] = useState({});
@@ -58,7 +60,7 @@ function InventoryItem() {
                             </div>
                         </section>
                     </div>
-                )}
+                </section>
             </div>
         </div>
     );
