@@ -1,163 +1,173 @@
-@use '../../styles/partials/fonts' as *;
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
-
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 .warehouse-table {
-    padding: 0;
-    border-top: solid 1px $instock-cloud;
+  padding: 0;
+  border-top: solid 1px $instock-cloud;
 
-    @include tablet{
-        border-top: none;
+  @include tablet {
+    border-top: none;
+  }
+
+  &__header {
+    display: none;
+    list-style: none;
+    background-color: $instock-light-grey;
+
+    @include tablet {
+      display: block;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $instock-slate;
+      gap: 1rem;
+      padding: 0 0.5rem;
     }
+  }
 
-    &__header {
-        display: none;
-        list-style: none;
-        background-color: $instock-light-grey;
-
-        @include tablet {
-            display: block;
-            display: flex;
-            justify-content: space-between;
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 600;
-            color: $instock-slate;
-            gap: 1rem;
-            padding: 0 0.5rem;
-        }
-    }
-
-    &__col {
-        display: flex;
-        flex-direction: column;
-        padding: 0.5rem 0 0.5rem;
-        flex: 1 1 50%;
-        font-size: 0.75rem;
-        color: $instock-black;
-
-        @include tablet{
-            font-size: $fs-desktop-bodySmall;
-        }
-
-        &--title{
-            font-size: $fs-mobile-links;
-            font-weight: $fw-semi-bold;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            color: $instock-indigo;
-            text-decoration: none;
-
-            @include tablet{
-                font-size: $fs-desktop-links;
-            }
-
-            &::after{
-                content: url(../../assets/icons/chevron_right-24px.svg);
-                line-height: 0;
-            }
-        }
-       
-        &:before {
-            font-size: $fs-mobile-bodySmall;
-            font-weight: $fw-semi-bold;
-            text-transform: uppercase;
-            color: $instock-slate;
-            margin-bottom: 0.5rem;
-            content: attr(data-label);
-            
-            @include tablet {
-                display: none;
-            }
-        }
-
-        @include tablet {
-            &--1,
-            &--2,
-            &--3,
-            &--4,
-            &--5
-            {flex: 1;}
-        }
-
-        &--1, &--2, &--3, &--4, &--5{
-            order: 1;
-            display: flex;
-            flex-direction: column;
-
-            @include tablet{
-                flex-direction: row;
-                align-items: center;
-            }
-        }
-
-        &--1{
-            @include tablet{
-                flex: 1.5;
-            }
-        }
-
-        &--2{
-            order: 3;
-
-            @include tablet{
-                order: 2;
-                flex: 1.4;
-            }
-        }
-
-        &--3{
-            order: 2;
-
-            @include tablet{
-                flex: 1.5;
-            }
-        }
-
-        &--4{
-            order: 4;
-
-            @include tablet{
-                flex: 2.1;
-            }
-        }
-
-        &--5{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 1rem;
-            order: 5;
-            flex: 1;
-            padding-bottom: 1rem;
-
-            @include tablet{
-                margin-top: -7px;
-                justify-content: flex-end;
-                padding-bottom: 0;
-            }
-            
-            &::before{
-                content: none;
-            }
-        }
-
-        &--btn{
-            border: 0;
-            background-color: transparent;
-            cursor: pointer;
-        }
+    &__col{
         
+        &--span{
+            font-size: $fs-mobile-bodySm;
+
+            @include tablet{
+                font-size: $fs-desktop-bodyMedium;
+            }
+        }
     }
 
-    &__row {
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        font-size: 0.6rem;
-        border-bottom: solid 1px $instock-cloud;
+    // &__col {
+    //     display: flex;
+    //     flex-direction: column;
+    //     padding: 0.5rem 0 0.5rem;
+    //     flex: 1 1 50%;
+    //     font-size: 0.75rem;
+    //     color: $instock-black;
+
+    //     @include tablet{
+    //         font-size: $fs-desktop-bodySmall;
+    //     }
+
+    //     &--title{
+    //         font-size: $fs-mobile-links;
+    //         font-weight: $fw-semi-bold;
+    //         display: flex;
+    //         flex-direction: row;
+    //         align-items: center;
+    //         color: $instock-indigo;
+    //         text-decoration: none;
+
+    //         @include tablet{
+    //             font-size: $fs-desktop-links;
+    //         }
+
+    //         &::after{
+    //             content: url(../../assets/icons/chevron_right-24px.svg);
+    //             line-height: 0;
+    //         }
+    //     }
+       
+    //     &:before {
+    //         font-size: $fs-mobile-bodySmall;
+    //         font-weight: $fw-semi-bold;
+    //         text-transform: uppercase;
+    //         color: $instock-slate;
+    //         margin-bottom: 0.5rem;
+    //         content: attr(data-label);
+            
+    //         @include tablet {
+    //             display: none;
+    //         }
+    //     }
+
+    //     @include tablet {
+    //         &--1,
+    //         &--2,
+    //         &--3,
+    //         &--4,
+    //         &--5
+    //         {flex: 1;}
+    //     }
+
+    //     &--1, &--2, &--3, &--4, &--5{
+    //         order: 1;
+    //         display: flex;
+    //         flex-direction: column;
+
+    //         @include tablet{
+    //             flex-direction: row;
+    //             align-items: center;
+    //         }
+    //     }
+
+    //     &--1{
+    //         @include tablet{
+    //             flex: 1.5;
+    //         }
+    //     }
+
+    //     &--2{
+    //         order: 3;
+
+    //         @include tablet{
+    //             order: 2;
+    //             flex: 1.4;
+    //         }
+    //     }
+
+    //     &--3{
+    //         order: 2;
+
+    //         @include tablet{
+    //             flex: 1.5;
+    //         }
+    //     }
+
+    //     &--4{
+    //         order: 4;
+
+    //         @include tablet{
+    //             flex: 2.1;
+    //         }
+    //     }
+
+    //     &--5{
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: space-between;
+    //         gap: 1rem;
+    //         order: 5;
+    //         flex: 1;
+    //         padding-bottom: 1rem;
+
+    //         @include tablet{
+    //             margin-top: -7px;
+    //             justify-content: flex-end;
+    //             padding-bottom: 0;
+    //         }
+            
+    //         &::before{
+    //             content: none;
+    //         }
+    //     }
+
+    //     &--btn{
+    //         border: 0;
+    //         background-color: transparent;
+    //         cursor: pointer;
+    //     }
+        
+    // }
+
+  &__row {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.6rem;
+    border-bottom: solid 1px $instock-cloud;
 
         @include tablet {
             display: flex;
@@ -165,25 +175,25 @@
             margin-top: 0;
             gap: 1rem;
             padding: 1.5rem 0.5rem;
+            font-size: $fs-desktop-bodyMedium;
 
-            &:hover {
-                background: rgba(46, 102, 230, 0.07);
-                transition: all 0.2s;
-            }
-        }
+      &:hover {
+        background: rgba(46, 102, 230, 0.07);
+        transition: all 0.2s;
+      }
     }
+  }
 }
 
-.sort{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        cursor: pointer;
+.sort {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 
-        &::after{
-            content: url(../../assets/icons/sort-24px.svg);
-            display: block;
-            margin-top: 0.3rem;
-        }
-
-    }
+  &::after {
+    content: url(../../assets/icons/sort-24px.svg);
+    display: block;
+    margin-top: 0.3rem;
+  }
+}

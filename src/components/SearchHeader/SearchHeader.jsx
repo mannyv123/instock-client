@@ -1,14 +1,15 @@
+import React from 'react';
 import './SearchHeader.scss';
 
-function SearchHeader() {
+function SearchHeader({ title }) {
     return (
-        <header className='warehouse-header'>
-            <h1 className='warehouse-header__title'>Warehouses</h1>
-            <form className='warehouse-header__form' action=''>
-                <input className='warehouse-header__input' type='search' placeholder='Search...'></input>
-                <button className='warehouse-header__button'>+ Add New Warehouse</button>
+        <div className='search-header'>
+            <h1 className='search-header__title'>{title}</h1>
+            <form className='search-header__form' action=''>
+                <input className='search-header__input' type='search' placeholder='Search'></input>
+                <button className='search-header__button'>+ Add New Search</button>
             </form>
-        </header>
+        </div>
     );
 }
 
