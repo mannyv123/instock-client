@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
-
-const apiUrl = "http://localhost:5001/api";
+import { apiUrl } from "../../App";
 
 const initialValues = {
     item_name: "",
