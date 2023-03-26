@@ -8,7 +8,7 @@ import "./InventoryList.scss";
 function InventoryList({ inventoryItems }) {
     return (
         <div>
-            <SearchHeader title="Inventory" />
+            <SearchHeader title="Inventory" buttonTitle="+ Add New Item" buttonLink="/inventory/add"/>
             <div className="inventory-list">
                 <InventoryRibbon />
                 {inventoryItems.map((inventory) => (

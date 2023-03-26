@@ -3,9 +3,9 @@
 @use "../../styles/partials/variables" as *;
 
 .search-header {
-    padding: 0.8125rem 1.5rem 0;
-    display: flex;
-    flex-direction: column;
+  padding: 0.8125rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
 
   @include tablet {
     flex-direction: row;
@@ -13,7 +13,7 @@
     justify-content: space-around;
   }
 
-  @include desktop{
+  @include desktop {
     padding: 1.3rem 2.5rem 1rem;
   }
 
@@ -70,7 +70,7 @@
       transition: all 0.5s;
     }
 
-    @include desktop{
+    @include desktop {
       flex: 0 0 18rem;
     }
   }
@@ -86,6 +86,8 @@
     text-align: center;
     font-size: $fs-mobile-buttons;
     border: 0;
+    // I added this padding -GJ
+    padding-top: 0.6rem;
 
     @include tablet {
       margin-top: 0;

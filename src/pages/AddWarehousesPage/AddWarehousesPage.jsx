@@ -18,11 +18,19 @@ const initialValues = {
 };
 
 function WarehousesAdd() {
-  const api_url = "http://localhost:8000";
+  const api_url = process.env.REACT_APP_API_URL;
 
   const navigate = useNavigate();
-  const [isError, setIsError] = useState(false);
   const [warehouse, setWarehouse] = useState(initialValues);
+  //-------validation
+  const [isErrorWarehouseName, setIsErrorWarehouseName] = useState(false);
+  const [isErrorAddress, setIsErrorAddress] = useState(false);
+  const [isErrorCity, setIsErrorCity] = useState(false);
+  const [isErrorCountry, setIsErrorCountry] = useState(false);
+  const [isErrorContactName, setIsErrorContactName] = useState(false);
+  const [isErrorContactPosition, setIsErrorContactPosition] = useState(false);
+  const [isErrorContactPhone, setIsErrorContactPhone] = useState(false);
+  const [isErrorContactEmail, setIsErrorContactEmail] = useState(false);
 
   function handleOnBack(event) {
     // This prevents refreshing the page when you submit something.
@@ -32,26 +40,52 @@ function WarehousesAdd() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
+    let isError = false;
     const re_email = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}"); // matches w something@something.com
     const re_phone = new RegExp("[0-9]{3}[0-9]{3}[0-9]{4}"); // matches w 1231231234
 
+    if (warehouse.warehouse_name === "") {
+      setIsErrorWarehouseName(true);
+      isError = true;
+    }
+    if (warehouse.address === "") {
+      setIsErrorAddress(true);
+      isError = true;
+    }
+    if (warehouse.city === "") {
+      setIsErrorCity(true);
+      isError = true;
+    }
+    if (warehouse.country === "") {
+      setIsErrorCountry(true);
+      isError = true;
+    }
+    if (warehouse.contact_name === "") {
+      setIsErrorContactName(true);
+      isError = true;
+    }
+    if (warehouse.contact_position === "") {
+      setIsErrorContactPosition(true);
+      isError = true;
+    }
     if (
-      warehouse.warehouse_name === "" ||
-      warehouse.address === "" ||
-      warehouse.city === "" ||
-      warehouse.country === "" ||
-      warehouse.contact_name === "" ||
-      warehouse.contact_position === "" ||
       warehouse.contact_phone === "" ||
-      !re_phone.test(warehouse.contact_phone) ||
+      !re_phone.test(warehouse.contact_phone)
+    ) {
+      setIsErrorContactPhone(true);
+      isError = true;
+    }
+    if (
       warehouse.contact_email === "" ||
       !re_email.test(warehouse.contact_email)
     ) {
-      setIsError(true);
+      setIsErrorContactEmail(true);
+      isError = true;
+    }
+
+    if (isError) {
       alert("error!");
     } else {
-      setIsError(false);
       postNewWarehouse();
       alert("submitted!");
       return navigate("/");
@@ -69,7 +103,7 @@ function WarehousesAdd() {
 
   async function postNewWarehouse() {
     try {
-      const response = await axios.post(`${api_url}/api/warehouses`, warehouse);
+      const response = await axios.post(`${api_url}/warehouses`, warehouse);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -94,7 +128,9 @@ function WarehousesAdd() {
                 <input
                   name="warehouse_name"
                   onChange={handleWarehouseOnChange}
-                  className={`content__input ${isError ? "error-state" : ""}`}
+                  className={`content__input ${
+                    isErrorWarehouseName ? "error-state" : ""
+                  }`}
                   type="text"
                   value={warehouse.warehouse_name}
                   placeholder="Warehouse Name"
@@ -103,7 +139,9 @@ function WarehousesAdd() {
                 <input
                   name="address"
                   onChange={handleWarehouseOnChange}
-                  className={`content__input ${isError ? "error-state" : ""}`}
+                  className={`content__input ${
+                    isErrorAddress ? "error-state" : ""
+                  }`}
                   type="text"
                   value={warehouse.address}
                   placeholder="Street Address"
@@ -112,7 +150,9 @@ function WarehousesAdd() {
                 <input
                   name="city"
                   onChange={handleWarehouseOnChange}
-                  className={`content__input ${isError ? "error-state" : ""}`}
+                  className={`content__input ${
+                    isErrorCity ? "error-state" : ""
+                  }`}
                   type="text"
                   value={warehouse.city}
                   placeholder="City"
@@ -121,7 +161,9 @@ function WarehousesAdd() {
                 <input
                   name="country"
                   onChange={handleWarehouseOnChange}
-                  className={`content__input ${isError ? "error-state" : ""}`}
+                  className={`content__input ${
+                    isErrorCountry ? "error-state" : ""
+                  }`}
                   type="text"
                   value={warehouse.country}
                   placeholder="Country"
@@ -135,7 +177,9 @@ function WarehousesAdd() {
               <input
                 name="contact_name"
                 onChange={handleWarehouseOnChange}
-                className={`content__input ${isError ? "error-state" : ""}`}
+                className={`content__input ${
+                  isErrorContactName ? "error-state" : ""
+                }`}
                 type="text"
                 value={warehouse.contact_name}
                 placeholder="Contact Name"
@@ -144,7 +188,9 @@ function WarehousesAdd() {
               <input
                 name="contact_position"
                 onChange={handleWarehouseOnChange}
-                className={`content__input ${isError ? "error-state" : ""}`}
+                className={`content__input ${
+                  isErrorContactPosition ? "error-state" : ""
+                }`}
                 type="text"
                 value={warehouse.contact_position}
                 placeholder="Position"
@@ -153,7 +199,9 @@ function WarehousesAdd() {
               <input
                 name="contact_phone"
                 onChange={handleWarehouseOnChange}
-                className={`content__input ${isError ? "error-state" : ""}`}
+                className={`content__input ${
+                  isErrorContactPhone ? "error-state" : ""
+                }`}
                 type="text"
                 value={warehouse.contact_phone}
                 placeholder="Phone Number"
@@ -162,7 +210,9 @@ function WarehousesAdd() {
               <input
                 name="contact_email"
                 onChange={handleWarehouseOnChange}
-                className={`content__input ${isError ? "error-state" : ""}`}
+                className={`content__input ${
+                  isErrorContactEmail ? "error-state" : ""
+                }`}
                 type="text"
                 value={warehouse.contact_email}
                 placeholder="Email"
