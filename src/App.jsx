@@ -12,7 +12,6 @@ import EditWarehousesPage from "./pages/EditWarehousesPage/EditWarehousesPage";
 import Footer from "./components/Footer/Footer";
 
 //Configuration
-require("dotenv").config();
 export const apiUrl = process.env.REACT_APP_API_URL;
 
 function App() {
