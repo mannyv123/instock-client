@@ -2,7 +2,7 @@ import React from "react";
 import "./SearchHeader.scss";
 import { Link } from "react-router-dom";
 
-function SearchHeader({ title }) {
+function SearchHeader({ title, buttonLink, buttonTitle }) {
   return (
     <div className="search-header">
       <h1 className="search-header__title">{title}</h1>
@@ -14,8 +14,8 @@ function SearchHeader({ title }) {
         ></input>
         {/* I changed the button here -GJ */}
         {/* <button className="search-header__button">+ Add New Warehouse</button> */}
-        <Link className="search-header__button" to="/warehouses/add">
-          + Add New Warehouse
+        <Link className="search-header__button" to={buttonLink}>
+          {buttonTitle}
         </Link>
       </form>
     </div>
