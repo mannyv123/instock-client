@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import iconReturn from "../../assets/icons/arrow_back-24px.svg";
 import DetailsBody from "../../components/DetailsBody/DetailsBody";
+import { Link } from "react-router-dom";
 
 function WarehouseDetails() {
   const api_url = process.env.REACT_APP_API_URL;
@@ -48,7 +49,12 @@ function WarehouseDetails() {
           </button>
           <h1 className="warehouse-header__text">{warehouse.warehouse_name}</h1>
         </div>
-        <button className="warehouse-header__button" data-label="Edit"></button>
+        <Link
+          // This links to edit page
+          to={`/warehouse/${warehouse.id}/edit`}
+          className="warehouse-header__button"
+          data-label="Edit"
+        ></Link>
       </div>
       <section className="warehouse-info">
         <div className="warehouse-info__address">
