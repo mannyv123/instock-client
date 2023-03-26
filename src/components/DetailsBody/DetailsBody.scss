@@ -23,9 +23,9 @@
             text-transform: uppercase;
             font-size: 1rem;
             font-weight: 600;
-            color: silver;
+            color: $instock-slate;
             gap: 1rem;
-            padding: 0 0.5rem;
+            padding: 0 2.5rem;
         }
     }
 
@@ -34,14 +34,17 @@
         display: flex;
         flex-wrap: wrap;
         font-size: 0.6rem;
-        border-bottom: solid 1px grey;
+        border-bottom: solid 1px $instock-cloud;
+        padding: 0.7rem 1.8rem;
+
+        &:last-child{ border-bottom: none; }
 
         @include tablet {
             display: flex;
             justify-content: space-between;
             margin-top: 0;
             gap: 1rem;
-            padding: 0.7rem 0.5rem;
+            padding: 0.7rem 2.5rem;
 
             &:hover {
                 background-color: aliceblue;
