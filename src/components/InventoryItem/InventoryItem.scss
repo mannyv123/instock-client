@@ -32,13 +32,21 @@
       font-size: $fs-mobile-bodySmall;
       text-transform: uppercase;
       color: $instock-slate;
+
+      @include tablet{
+        font-size: $fs-desktop-bodySmall;
+      }
     }
 
     &__text{
       font-size: $fs-mobile-bodyMedium;
 
-      &--success, &--failed{
-        background-color: rgba($instock-green, 0.2);
+      @include tablet{
+        font-size: $fs-desktop-bodyMedium;
+      }
+
+      &--success{
+        background-color: rgba($instock-green, 0.1);
         color: $instock-green;
         width: 4rem;
         text-align: center;
@@ -52,23 +60,28 @@
     }
     
     &--failed{
-        background-color: rgba($instock-red, 0.2);
-        width: 5rem;
+        background-color: rgba($instock-red, 0.1);
+        width: 5.5rem;
+        color: $instock-red;
         text-align: center;
         padding: 0.4rem;
         border-radius: 1rem;
+        font-size: $fs-mobile-bodySmall;
+        text-transform: uppercase;
+        font-weight: $fw-semi-bold;
+        margin-top: 0.3rem;
+        display: block;
     }
     }
   }
 
-  
+
   .description {
     grid-area: description;
   
     @include tablet {
       grid-column: 1 / span 2;
       grid-row: 1 / span 1;
-      border-right: solid 1px red;
       padding-right: 1rem;
     }
   }
@@ -79,7 +92,6 @@
     @include tablet {
       grid-column: 1 / span 2;
       grid-row: 2 / span 1;
-      border-right: solid 1px red;
       padding-right: 1rem;
     }
   }
