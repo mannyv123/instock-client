@@ -50,7 +50,7 @@ function WarehouseDetails() {
                 </div>
                 <Link
                     // This links to edit page
-                    to={`/warehouse/${warehouse.id}/edit`}
+                    to={`/warehouses/${warehouse.id}/edit`}
                     className="warehouse-header__button"
                     data-label="Edit"
                 ></Link>

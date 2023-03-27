@@ -29,7 +29,7 @@ function App() {
                     {/* GJ's work below */}
                     <Route path="/warehouses/add" element={<AddWarehousesPage />} />
                     {/* Seyon's work below */}
-                    {/* <Route path="/warehouses/edit" element={<EditWarehousesPage />} /> */}
+                    <Route path="/warehouses/:id/edit" element={<EditWarehousesPage />} />
                     {/* Seyon's work below */}
                     <Route path="/inventory" element={<Inventory />} />
                     {/* Felipe's work below */}
