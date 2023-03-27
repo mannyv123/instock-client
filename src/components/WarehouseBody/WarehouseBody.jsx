@@ -8,23 +8,15 @@ import { apiUrl } from '../../App';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import WarehouseHeader from '../WarehouseHeader/WarehouseHeader';
 
-<<<<<<< HEAD
-function WarehouseBody() {
+function WarehouseBody({ search }) {
      const [warehouses, setWarehouses] = useState([]);
      const [isOpen, setIsOpen] = useState(false);
      const [warehouse, setWarehouse] = useState();
-=======
-function WarehouseBody({ search }) {
-    const [warehouses, setWarehouses] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
-    const [warehouse, setWarehouse] = useState();
->>>>>>> develop
 
      useEffect(() => {
           getWarehouses();
      }, []);
 
-<<<<<<< HEAD
      console.log(warehouses);
      // diving deeper -GJ
      function getWarehouses(sort_by = 'warehouse_name', isAsc = true) {
@@ -38,6 +30,27 @@ function WarehouseBody({ search }) {
                     console.log(error);
                });
      }
+
+     // Manjot Code Start---------------
+
+     //columns not to search
+     const excludeColumns = ['id'];
+
+     //filter inventory listing; if no value, return all inventory items
+     //else, check if any keys in inventory object are included in the excludeColumns array;
+     //if not in that array, then return true if value of key includes search value
+     const filteredWarehouses = warehouses.filter((warehouse) => {
+          const lowerCasedSearch = search.toLowerCase();
+          if (search === '') {
+               return warehouse;
+          } else {
+               return Object.keys(warehouse).some((key) => {
+                    return excludeColumns.includes(key) ? false : warehouse[key].toString().toLowerCase().includes(lowerCasedSearch);
+               });
+          }
+     });
+
+     // Manjot Code End-----------------
 
      return (
           <ul className='warehouse-table'>
@@ -53,7 +66,8 @@ function WarehouseBody({ search }) {
                          typePlural='warehouses'
                     />
                )}
-               {warehouses.map((warehouse) => (
+               {/* Manjot Code End */}
+               {filteredWarehouses.map((warehouse) => (
                     <li className='warehouse-table__row' key={warehouse.id}>
                          <div className='warehouse-table__col warehouse-table__col--1' data-label='Warehouse'>
                               <Link to={`/warehouses/${warehouse.id}`} className='warehouse-table__col--title'>
@@ -82,116 +96,16 @@ function WarehouseBody({ search }) {
                                         setWarehouse(warehouse);
                                    }}
                                    className='warehouse-table__col--btn'>
-                                   <img className='warehouse-table__img' src={deleteIcon} alt='delete icon' />
+                                   <img className='warehouse-table__img' src={deleteIcon} alt='delete' />
                               </button>
-
-                              {console.log(`warehouse name ${warehouse.warehouse_name}`)}
                               <button className='warehouse-table__col--btn'>
-                                   <img className='warehouse-table__img' src={editIcon} alt='edit icon' />
+                                   <img className='warehouse-table__img' src={editIcon} alt='edit' />
                               </button>
                          </div>
                     </li>
                ))}
           </ul>
      );
-=======
-    console.log(warehouses);
-    // diving deeper -GJ
-    function getWarehouses(sort_by = "warehouse_name", isAsc = true) {
-        const order_by = isAsc ? "asc" : "desc";
-        //-------------------------------------------
-        axios
-            .get(`${apiUrl}/warehouses?sort_by=${sort_by}&order_by=${order_by}`)
-            .then((response) => {
-                setWarehouses(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
-
-    // Manjot Code Start---------------
-
-    //columns not to search
-    const excludeColumns = ["id"];
-
-    //filter inventory listing; if no value, return all inventory items
-    //else, check if any keys in inventory object are included in the excludeColumns array;
-    //if not in that array, then return true if value of key includes search value
-    const filteredWarehouses = warehouses.filter((warehouse) => {
-        const lowerCasedSearch = search.toLowerCase();
-        if (search === "") {
-            return warehouse;
-        } else {
-            return Object.keys(warehouse).some((key) => {
-                return excludeColumns.includes(key)
-                    ? false
-                    : warehouse[key].toString().toLowerCase().includes(lowerCasedSearch);
-            });
-        }
-    });
-
-    // Manjot Code End-----------------
-
-    return (
-        <ul className="warehouse-table">
-            {/* diving deeper -GJ */}
-            <WarehouseHeader getWarehouses={getWarehouses} />
-            {isOpen && (
-                <DeleteModal
-                    setIsOpen={setIsOpen}
-                    item={warehouse}
-                    getItems={getWarehouses}
-                    apiPath="/warehouses"
-                    type="warehouse"
-                    typePlural="warehouses"
-                />
-            )}
-            {/* Manjot Code End */}
-            {filteredWarehouses.map((warehouse) => (
-                <li className="warehouse-table__row" key={warehouse.id}>
-                    <div className="warehouse-table__col warehouse-table__col--1" data-label="Warehouse">
-                        <Link to={`/warehouses/${warehouse.id}`} className="warehouse-table__col--title">
-                            <span className="warehouse-table__col--span">{warehouse.warehouse_name}</span>
-                        </Link>
-                    </div>
-                    <div className="warehouse-table__col warehouse-table__col--2" data-label="Address">
-                        <span className="warehouse-table__col--span">
-                            {warehouse.address}, {warehouse.city}, {warehouse.country}
-                        </span>
-                    </div>
-                    <div className="warehouse-table__col warehouse-table__col--3" data-label="Contact Name">
-                        <span className="warehouse-table__col--span">{warehouse.contact_name}</span>
-                    </div>
-                    <div
-                        className="warehouse-table__col warehouse-table__col--4"
-                        data-label="Contact Information"
-                    >
-                        <span className="warehouse-table__col--span">
-                            {warehouse.contact_phone}
-                            <br />
-                            {warehouse.contact_email}
-                        </span>
-                    </div>
-                    <div className="warehouse-table__col warehouse-table__col--5" data-label="Actions">
-                        <button
-                            onClick={() => {
-                                setIsOpen(true);
-                                setWarehouse(warehouse);
-                            }}
-                            className="warehouse-table__col--btn"
-                        >
-                            <img src={deleteIcon} alt="delete" />
-                        </button>
-                        <button className="warehouse-table__col--btn">
-                            <img src={editIcon} alt="edit" />
-                        </button>
-                    </div>
-                </li>
-            ))}
-        </ul>
-    );
->>>>>>> develop
 }
 
 export default WarehouseBody;
