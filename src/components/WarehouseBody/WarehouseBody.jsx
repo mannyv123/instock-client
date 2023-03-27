@@ -34,7 +34,14 @@ function WarehouseBody() {
         <ul className="warehouse-table">
             <WarehouseHeader />
             {isOpen && (
-                <DeleteModal setIsOpen={setIsOpen} warehouse={warehouse} getWarehouses={getWarehouses} />
+                <DeleteModal
+                    setIsOpen={setIsOpen}
+                    item={warehouse}
+                    getItems={getWarehouses}
+                    apiPath="/warehouses"
+                    type="warehouse"
+                    typePlural="warehouses"
+                />
             )}
             {warehouses.map((warehouse) => (
                 <li className="warehouse-table__row" key={warehouse.id}>

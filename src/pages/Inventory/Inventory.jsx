@@ -1,4 +1,4 @@
-import InventoryItem from "../../components/InventoryItem/InventoryItem";
+// import InventoryItem from "../../components/InventoryItem/InventoryItem";
 import "./Inventory.scss";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import { apiUrl } from "../../App";
@@ -28,7 +28,7 @@ function Inventory() {
 
     return (
         <div className="container">
-            <InventoryList inventoryItems={inventoryItems} />
+            <InventoryList inventoryItems={inventoryItems} generateInventoryItems={generateInventoryItems} />
         </div>
     );
 }
