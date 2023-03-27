@@ -1,3 +1,4 @@
+import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
 // GJ's work
 import "./AddWarehousesPage.scss";
 import { useState } from "react";
@@ -117,83 +118,97 @@ function WarehousesAdd() {
                         <div className="content__details-container">
                             <div className="content__input-container">
                                 <h2 className="content__title">Warehouse Details</h2>
-                                <h3 className="content__input-label">Warehouse Name</h3>
+                                <h3 className="content__input-label content__input-label--first">
+                                    Warehouse Name
+                                </h3>
                                 <input
                                     name="warehouse_name"
                                     onChange={handleWarehouseOnChange}
-                                    className={`content__input ${isErrorWarehouseName ? "error-state" : ""}`}
+                                    className={`content__input-txt ${
+                                        isErrorWarehouseName ? "error-state" : ""
+                                    }`}
                                     type="text"
                                     value={warehouse.warehouse_name}
                                     placeholder="Warehouse Name"
                                 />
+                                {isErrorWarehouseName && <ErrorMsg />}
                                 <h3 className="content__input-label">Street Address</h3>
                                 <input
                                     name="address"
                                     onChange={handleWarehouseOnChange}
-                                    className={`content__input ${isErrorAddress ? "error-state" : ""}`}
+                                    className={`content__input-txt ${isErrorAddress ? "error-state" : ""}`}
                                     type="text"
                                     value={warehouse.address}
                                     placeholder="Street Address"
                                 />
+                                {isErrorAddress && <ErrorMsg />}
                                 <h3 className="content__input-label">City</h3>
                                 <input
                                     name="city"
                                     onChange={handleWarehouseOnChange}
-                                    className={`content__input ${isErrorCity ? "error-state" : ""}`}
+                                    className={`content__input-txt ${isErrorCity ? "error-state" : ""}`}
                                     type="text"
                                     value={warehouse.city}
                                     placeholder="City"
                                 />
+                                {isErrorCity && <ErrorMsg />}
                                 <h3 className="content__input-label">Country</h3>
                                 <input
                                     name="country"
                                     onChange={handleWarehouseOnChange}
-                                    className={`content__input ${isErrorCountry ? "error-state" : ""}`}
+                                    className={`content__input-txt ${isErrorCountry ? "error-state" : ""}`}
                                     type="text"
                                     value={warehouse.country}
                                     placeholder="Country"
                                 />
+                                {isErrorCountry && <ErrorMsg />}
                             </div>
                         </div>
 
                         <div className="content__details-container">
                             <h2 className="content__title">Contact Details</h2>
-                            <h3 className="content__input-label">Contact Name</h3>
+                            <h3 className="content__input-label content__input-label--first">Contact Name</h3>
                             <input
                                 name="contact_name"
                                 onChange={handleWarehouseOnChange}
-                                className={`content__input ${isErrorContactName ? "error-state" : ""}`}
+                                className={`content__input-txt ${isErrorContactName ? "error-state" : ""}`}
                                 type="text"
                                 value={warehouse.contact_name}
                                 placeholder="Contact Name"
                             />
+                            {isErrorContactName && <ErrorMsg />}
                             <h3 className="content__input-label">Position</h3>
                             <input
                                 name="contact_position"
                                 onChange={handleWarehouseOnChange}
-                                className={`content__input ${isErrorContactPosition ? "error-state" : ""}`}
+                                className={`content__input-txt ${
+                                    isErrorContactPosition ? "error-state" : ""
+                                }`}
                                 type="text"
                                 value={warehouse.contact_position}
                                 placeholder="Position"
                             />
+                            {isErrorContactPosition && <ErrorMsg />}
                             <h3 className="content__input-label">Phone Number</h3>
                             <input
                                 name="contact_phone"
                                 onChange={handleWarehouseOnChange}
-                                className={`content__input ${isErrorContactPhone ? "error-state" : ""}`}
+                                className={`content__input-txt ${isErrorContactPhone ? "error-state" : ""}`}
                                 type="text"
                                 value={warehouse.contact_phone}
                                 placeholder="Phone Number"
                             />
+                            {isErrorContactPhone && <ErrorMsg />}
                             <h3 className="content__input-label">Email</h3>
                             <input
                                 name="contact_email"
                                 onChange={handleWarehouseOnChange}
-                                className={`content__input ${isErrorContactEmail ? "error-state" : ""}`}
+                                className={`content__input-txt ${isErrorContactEmail ? "error-state" : ""}`}
                                 type="text"
                                 value={warehouse.contact_email}
                                 placeholder="Email"
                             />
+                            {isErrorContactEmail && <ErrorMsg />}
                         </div>
                     </div>
                     <div className="content__buttons-container">
