@@ -8,7 +8,7 @@ import { apiUrl } from "../../App";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import WarehouseHeader from "../WarehouseHeader/WarehouseHeader";
 
-function WarehouseBody() {
+function WarehouseBody({ search }) {
     const [warehouses, setWarehouses] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [warehouse, setWarehouse] = useState();
@@ -16,8 +16,6 @@ function WarehouseBody() {
     useEffect(() => {
         getWarehouses();
     }, []);
-
-    console.log(warehouses);
 
     function getWarehouses() {
         axios
@@ -30,9 +28,22 @@ function WarehouseBody() {
             });
     }
 
+    // Manjot Code Start
+
+    const filteredWarehouses = warehouses.filter((warehouse) => {
+        if (search === "") {
+            return warehouse;
+        } else {
+            return warehouse.warehouse_name.toLowerCase().includes(search);
+        }
+    });
+
+    // Manjot Code End
+
     return (
         <ul className="warehouse-table">
             <WarehouseHeader />
+            {/* Manjot Code Start */}
             {isOpen && (
                 <DeleteModal
                     setIsOpen={setIsOpen}
@@ -43,7 +54,8 @@ function WarehouseBody() {
                     typePlural="warehouses"
                 />
             )}
-            {warehouses.map((warehouse) => (
+            {/* Manjot Code End */}
+            {filteredWarehouses.map((warehouse) => (
                 <li className="warehouse-table__row" key={warehouse.id}>
                     <div className="warehouse-table__col warehouse-table__col--1" data-label="Warehouse">
                         <Link to={`/warehouses/${warehouse.id}`} className="warehouse-table__col--title">
@@ -78,8 +90,6 @@ function WarehouseBody() {
                         >
                             <img src={deleteIcon} alt="delete" />
                         </button>
-
-                        {console.log(`warehouse name ${warehouse.warehouse_name}`)}
                         <button className="warehouse-table__col--btn">
                             <img src={editIcon} alt="edit" />
                         </button>
