@@ -96,10 +96,10 @@ function WarehouseBody({ search }) {
                                         setWarehouse(warehouse);
                                    }}
                                    className='warehouse-table__col--btn'>
-                                   <img className='warehouse-table__img' src={deleteIcon} alt='delete' />
+                                   <img src={deleteIcon} alt='delete' />
                               </button>
                               <button className='warehouse-table__col--btn'>
-                                   <img className='warehouse-table__img' src={editIcon} alt='edit' />
+                                   <img src={editIcon} alt='edit' />
                               </button>
                          </div>
                     </li>
