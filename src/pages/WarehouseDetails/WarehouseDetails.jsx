@@ -7,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 import iconReturn from "../../assets/icons/arrow_back-24px.svg";
 import DetailsBody from "../../components/DetailsBody/DetailsBody";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../../App";
 
 function WarehouseDetails() {
-  const api_url = process.env.REACT_APP_API_URL;
-
   const navigate = useNavigate();
 
   const [warehouse, setWarehouse] = useState({});
@@ -20,7 +19,7 @@ function WarehouseDetails() {
   const getWarehouseDetails = useCallback(
     (id) => {
       if (id) {
-        axios.get(`${api_url}/warehouses/${id}`).then((response) => {
+        axios.get(`${apiUrl}/warehouses/${id}`).then((response) => {
           console.log(response.data);
           // we are calling setWarehouse here.
           setWarehouse(response.data);
