@@ -18,10 +18,12 @@ function WarehouseBody() {
     }, []);
 
     console.log(warehouses);
-
-    function getWarehouses() {
+    // diving deeper -GJ
+    function getWarehouses(sort_by = "warehouse_name", isAsc = true ) {
+        const order_by = isAsc ? "asc": "desc";
+    //-------------------------------------------
         axios
-            .get(`${apiUrl}/warehouses`)
+            .get(`${apiUrl}/warehouses?sort_by=${sort_by}&order_by=${order_by}`)
             .then((response) => {
                 setWarehouses(response.data);
             })
@@ -32,7 +34,8 @@ function WarehouseBody() {
 
     return (
         <ul className="warehouse-table">
-            <WarehouseHeader />
+            {/* diving deeper -GJ */}
+            <WarehouseHeader getWarehouses={getWarehouses}/>
             {isOpen && (
                 <DeleteModal
                     setIsOpen={setIsOpen}
