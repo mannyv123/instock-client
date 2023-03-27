@@ -52,6 +52,14 @@
             }
         }
     }
+
+    &__notfound{
+        text-align: center;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
     .sort{
