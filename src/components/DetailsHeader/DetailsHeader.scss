@@ -74,7 +74,6 @@
             font-weight: $fw-semi-bold;
             color: $instock-red;
         }
-
        
         &:before {
             font-size: 0.6875rem;
@@ -164,8 +163,8 @@
             @include tablet{
                 // margin-top: -1rem;
             }
+
         }
-        
     }
 
 }
