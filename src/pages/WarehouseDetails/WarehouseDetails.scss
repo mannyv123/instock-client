@@ -76,6 +76,24 @@
     position: relative;
     top: 0.3rem;
     margin-right: 0.5em;
+    animation: none;
+
+    @keyframes moveArrow {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    &:hover {
+      animation: moveArrow 1s linear infinite;
+      transform: translateX(-10px);
+    }
     
     @include tablet{
       top: 0;
