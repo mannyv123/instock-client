@@ -7,6 +7,7 @@ import "./InventoryList.scss";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { useState } from "react";
 
+{/* diving deeper -GJ */}
 function InventoryList({ inventoryItems, generateInventoryItems }) {
     const [isOpen, setIsOpen] = useState(false);
     const [inventory, setInventory] = useState();
@@ -14,7 +15,8 @@ function InventoryList({ inventoryItems, generateInventoryItems }) {
         <div>
             <SearchHeader title="Inventory" buttonTitle="+ Add New Item" buttonLink="/inventory/add" />
             <div className="inventory-list">
-                <InventoryRibbon />
+                {/* diving deeper -GJ */}
+                <InventoryRibbon generateInventoryItems={generateInventoryItems}/>
                 {isOpen && (
                     <DeleteModal
                         setIsOpen={setIsOpen}
