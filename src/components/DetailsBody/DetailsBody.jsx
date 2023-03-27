@@ -11,9 +11,7 @@ const apiUrl = 'http://localhost:5005/api';
 
 function DetailsBody() {
      const [selectedInventory, setSelectedInventory] = useState({});
-     //   gj added this because we need an array of inventories, not just a single inventory.
      const [inventories, setInventories] = useState([]);
-     //   gj added this because we need an array of inventories, not just a single inventory.
 
      const { id } = useParams();
 
@@ -32,7 +30,7 @@ function DetailsBody() {
           axios.get(`${apiUrl}/warehouses/${id}`)
                .then((res) => {
                     setSelectedInventory(res.data);
-                    // gj added this
+
                     setInventories(res.data.inventories);
                })
                .catch((err) => {
@@ -43,11 +41,7 @@ function DetailsBody() {
      return (
           <ul className='warehouse-details'>
                <DetailsHeader />
-               {/* gj changed this so if there's no inventory, it will say "no data found"
-      still need to style with css. */}
                {selectedInventory && inventories && inventories.length > 0 ? (
-                    // gj added this so we can loop through the inventories data,
-                    // so there are individual entries for each item.
                     inventories.map((inventory) => (
                          <li className='warehouse-details__row' key={inventory.id}>
                               <div className='warehouse-details__col warehouse-details__col--1' data-label='Warehouse'>
@@ -79,7 +73,7 @@ function DetailsBody() {
                          </li>
                     ))
                ) : (
-                    <li>No Data Found</li>
+                    <p className='warehouse-details__notfound'>No Data Found</p>
                )}
           </ul>
      );
