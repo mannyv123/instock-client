@@ -3,14 +3,18 @@
 @use "../../styles/partials/variables" as *;
 
 .search-header {
-    padding: 0.8125rem 0 0;
-    display: flex;
-    flex-direction: column;
+  padding: 0.8125rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
 
   @include tablet {
     flex-direction: row;
-    padding: 1rem 0 1.5rem;
+    padding: 1.3rem 2rem 1rem;
     justify-content: space-around;
+  }
+
+  @include desktop {
+    padding: 1.3rem 2.5rem 1rem;
   }
 
   &__title {
@@ -19,6 +23,7 @@
 
     @include tablet {
       margin-top: 0;
+      font-size: $fs-desktop-pageHeader;
     }
   }
 
@@ -61,6 +66,11 @@
 
     @include tablet {
       height: 2.6rem;
+      flex: 0 0 12rem;
+      transition: all 0.5s;
+    }
+
+    @include desktop {
       flex: 0 0 18rem;
     }
   }
@@ -76,6 +86,8 @@
     text-align: center;
     font-size: $fs-mobile-buttons;
     border: 0;
+    // I added this padding -GJ
+    padding-top: 0.6rem;
 
     @include tablet {
       margin-top: 0;

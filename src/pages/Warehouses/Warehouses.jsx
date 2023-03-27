@@ -6,8 +6,8 @@ import WarehouseBody from "../../components/WarehouseBody/WarehouseBody";
 function Warehouses() {
     return (
         //    Felipe's code
-        <div className='container'>
-            <SearchHeader title='Inventory' />
+        <div className="container">
+            <SearchHeader title="Warehouses" buttonLink="/warehouses/add" buttonTitle="+ Add New Warehouse" />
             <WarehouseBody />
         </div>
     );

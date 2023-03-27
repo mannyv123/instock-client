@@ -2,10 +2,9 @@ import "./AddInventoryPage.scss";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
-
-const apiUrl = "http://localhost:5001/api";
+import { apiUrl } from "../../App";
 
 const initialValues = {
     item_name: "",
@@ -27,12 +26,11 @@ function AddInventoryPage() {
     const [isInvalidQuantity, setIsInvalidQuantity] = useState(false);
     const [isInvalidWarehouse, setIsInvalidWarehouse] = useState(false);
 
+    //Handles updating input values
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-
         setValues({ ...values, [name]: value });
     };
-    console.log(values);
 
     //Get current warehouses for dropdown selection
     useEffect(() => {
@@ -62,7 +60,6 @@ function AddInventoryPage() {
             !values.quantity &&
             !values.warehouse_id
         ) {
-            console.log("everything is blank");
             setIsInvalidName(true);
             setIsInvalidDesc(true);
             setIsInvalidCategory(true);
@@ -71,27 +68,21 @@ function AddInventoryPage() {
             setIsInvalidWarehouse(true);
             return false;
         } else if (!values.item_name) {
-            console.log("item_name is blank");
             setIsInvalidName(true);
             return false;
         } else if (!values.description) {
-            console.log("description is blank");
             setIsInvalidDesc(true);
             return false;
         } else if (!values.category) {
-            console.log("category is blank");
             setIsInvalidCategory(true);
             return false;
         } else if (!values.status) {
-            console.log("status is blank");
             setIsInvalidStatus(true);
             return false;
         } else if (values.quantity === 0 && values.status === "In Stock") {
-            console.log("quantity is blank");
             setIsInvalidQuantity(true);
             return false;
         } else if (!values.warehouse_id) {
-            console.log("warehouse_id is blank");
             setIsInvalidWarehouse(true);
             return false;
         } else {
@@ -99,6 +90,7 @@ function AddInventoryPage() {
         }
     };
 
+    //Function for Form Submission
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
@@ -111,8 +103,8 @@ function AddInventoryPage() {
 
         axios
             .post(`${apiUrl}/inventories`, values)
-            .then((response) => {
-                console.log(response);
+            .then(() => {
+                navigate("/inventory");
             })
             .catch((error) => {
                 console.error(error);
@@ -126,12 +118,14 @@ function AddInventoryPage() {
         <section className="container">
             <section className="new-inventory">
                 <div className="new-inventory__header">
-                    <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    <Link className="new-inventory__back-link" to="/inventory">
+                        <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    </Link>
                     <h1 className="new-inventory__title">Add New Inventory Item</h1>
                 </div>
                 <form
-                    action="submit"
                     className="new-inventory__form"
+                    action="submit"
                     onSubmit={(event) => handleFormSubmit(event)}
                 >
                     <div className="new-inventory__item-details">
@@ -199,7 +193,9 @@ function AddInventoryPage() {
                                     onChange={handleInputChange}
                                 />
                                 <label
-                                    className={!isInvalidStatus ? "" : "new-inventory__status-input--error"}
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
                                     htmlFor="inStock"
                                 >
                                     In Stock
@@ -215,7 +211,9 @@ function AddInventoryPage() {
                                     onChange={handleInputChange}
                                 />
                                 <label
-                                    className={!isInvalidStatus ? "" : "new-inventory__status-input--error"}
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
                                     htmlFor="outOfStock"
                                 >
                                     Out of Stock
@@ -232,7 +230,7 @@ function AddInventoryPage() {
                                     Quantity
                                 </label>
                                 <input
-                                    className={`new-inventory__input ${
+                                    className={`new-inventory__input new-inventory__input--quantity ${
                                         !isInvalidQuantity ? "" : "new-inventory__input--error"
                                     }`}
                                     type="text"
