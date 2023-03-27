@@ -7,29 +7,40 @@
     display: flex;
     flex-direction: column;
     background-color: $instock-graphite;
+    padding-bottom: 5.35rem;
 
     @include tablet {
-        padding: 1.6875rem 2rem;
+        padding: 1.6875rem 3rem;
         flex-direction: row;
         justify-content: space-between;
         padding-bottom: 6.5rem;
     }
 
     @include desktop {
-        // padding: 1.6875rem 8.125rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
 
     &__logo {
-        height: 1.076923rem;
+        // height: 1.076923rem;
+        width: 8.036875rem;
         margin: 0 auto;
-        padding-bottom: 1.5rem;
+        padding-bottom: 1rem;
         box-sizing: content-box;
 
         @include tablet {
-            height: 1.076923rem;
+            // height: 1.076923rem;
             padding-top: 0.68rem;
             margin: 0 auto 0 0;
             padding-bottom: 0;
+        }
+    }
+
+    &__nav {
+        margin: 0 auto;
+
+        @include tablet {
+            margin: 0 auto 0 0;
         }
     }
 
@@ -61,7 +72,7 @@
         }
     }
 
-    &__button:hover {
+    &__button:focus {
         background-color: $instock-black;
     }
 }

@@ -54,7 +54,6 @@ function EditWarehousesPage() {
         alert("error!");
       } else {
         setIsError(false);
-        postNewWarehouse();
         alert("submitted!");
         return navigate("/");
       }
