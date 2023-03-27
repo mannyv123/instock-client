@@ -17,9 +17,13 @@ function WarehouseBody({ search }) {
         getWarehouses();
     }, []);
 
-    function getWarehouses() {
+    console.log(warehouses);
+    // diving deeper -GJ
+    function getWarehouses(sort_by = "warehouse_name", isAsc = true) {
+        const order_by = isAsc ? "asc" : "desc";
+        //-------------------------------------------
         axios
-            .get(`${apiUrl}/warehouses`)
+            .get(`${apiUrl}/warehouses?sort_by=${sort_by}&order_by=${order_by}`)
             .then((response) => {
                 setWarehouses(response.data);
             })
@@ -53,8 +57,8 @@ function WarehouseBody({ search }) {
 
     return (
         <ul className="warehouse-table">
-            <WarehouseHeader />
-            {/* Manjot Code Start */}
+            {/* diving deeper -GJ */}
+            <WarehouseHeader getWarehouses={getWarehouses} />
             {isOpen && (
                 <DeleteModal
                     setIsOpen={setIsOpen}

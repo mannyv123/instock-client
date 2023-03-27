@@ -51,8 +51,8 @@
             }
         }
 
-        &--success, &--failed{
-            background-color: rgba($instock-green, 0.3);
+        &--success{
+            background-color: rgba($instock-green, 0.1);
             color: $instock-green;
             width: 4rem;
             text-align: center;
@@ -64,11 +64,15 @@
         }
         
         &--failed{
-            background-color: rgba($instock-red, 0.3);
-            width: 5rem;
+            background-color: rgba($instock-red, 0.1);
+            width: 6rem;
             text-align: center;
             padding: 0.4rem;
             border-radius: 1rem;
+            font-size: $fs-mobile-bodySmall;
+            text-transform: uppercase;
+            font-weight: $fw-semi-bold;
+            color: $instock-red;
         }
 
        
