@@ -6,7 +6,6 @@ import { apiUrl } from "../../App";
 
 function DeleteModal({ setIsOpen, item, getItems, apiPath, type, typePlural }) {
     const handleDelete = () => {
-        console.log("DELETE");
         axios
             .delete(`${apiUrl}${apiPath}/${item.id}`)
             .then(() => {
