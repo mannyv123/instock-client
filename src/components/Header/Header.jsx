@@ -17,7 +17,6 @@ function Header() {
                 </NavLink>
             </div>
         </div>
-    </div>
     )
 }
 
