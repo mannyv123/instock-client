@@ -17,6 +17,10 @@ function WarehouseBody({ search }) {
         getWarehouses();
     }, []);
 
+    // useEffect(() => {
+    //     filterData(search);
+    // }, [search]);
+
     function getWarehouses() {
         axios
             .get(`${apiUrl}/warehouses`)
@@ -30,11 +34,17 @@ function WarehouseBody({ search }) {
 
     // Manjot Code Start
 
+    const excludeColumns = ["id"];
     const filteredWarehouses = warehouses.filter((warehouse) => {
+        const lowerCasedSearch = search.toLowerCase();
         if (search === "") {
             return warehouse;
         } else {
-            return warehouse.warehouse_name.toLowerCase().includes(search);
+            return Object.keys(warehouse).some((key) => {
+                return excludeColumns.includes(key)
+                    ? false
+                    : warehouse[key].toString().toLowerCase().includes(lowerCasedSearch);
+            });
         }
     });
 

@@ -10,10 +10,8 @@ function Warehouses() {
 
     const handleSearchInput = (event) => {
         const { value } = event.target;
-        setSearch(value.toLowerCase());
+        setSearch(value);
     };
-
-    console.log(search);
 
     //------------------Manjot Code End---------------------
     return (
