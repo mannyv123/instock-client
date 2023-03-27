@@ -63,10 +63,10 @@ function DetailsBody() {
                               </div>
                               <div className='warehouse-details__col warehouse-details__col--5' data-label='Actions'>
                                    <button className='warehouse-details__col--btn'>
-                                        <img src={deleteIcon} alt='delete' />
+                                        <img className='warehouse-details__col--img' src={deleteIcon} alt='delete' />
                                    </button>
                                    <button className='warehouse-details__col--btn'>
-                                        <img src={editIcon} alt='edit' />
+                                        <img className='warehouse-details__col--img' src={editIcon} alt='edit' />
                                    </button>
                               </div>
                          </li>

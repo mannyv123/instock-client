@@ -20,22 +20,42 @@
             font-weight: $fw-semi-bold;
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             color: $instock-indigo;
             text-decoration: none;
+            animation: none;
 
             @include tablet{
                 font-size: $fs-desktop-links;
             }
 
+            @keyframes moveArrowRight {
+                0% {
+                  transform: translateX(4px);
+                }
+                50% {
+                  transform: translateX(-100px);
+                }
+                100% {
+                  transform: translateX(4px);
+                }
+              }
+
             &::after{
                 content: url(../../assets/icons/chevron_right-24px.svg);
                 line-height: 0;
+                display: block;
+                margin-top: -0.1rem;
+                margin-left: 0.3rem;
 
                 @include tablet{
                     display: block;
-                    margin-top: 3px;
+                    margin-top: 0;
                 }
+            }
+            &:hover::after{
+                animation: moveArrow 1s linear infinite;
+                // transform: translateX(10px);
             }
             &:hover{
                 text-decoration: underline;
