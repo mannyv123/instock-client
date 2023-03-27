@@ -21,7 +21,6 @@ function InventoryItem() {
             .get(`${apiUrl}/inventories/${id}`)
             .then((response) => {
                 setSelectedInventory(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);

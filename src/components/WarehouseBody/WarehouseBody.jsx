@@ -8,7 +8,7 @@ import { apiUrl } from "../../App";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import WarehouseHeader from "../WarehouseHeader/WarehouseHeader";
 
-function WarehouseBody() {
+function WarehouseBody({ search }) {
     const [warehouses, setWarehouses] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [warehouse, setWarehouse] = useState();
@@ -19,9 +19,9 @@ function WarehouseBody() {
 
     console.log(warehouses);
     // diving deeper -GJ
-    function getWarehouses(sort_by = "warehouse_name", isAsc = true ) {
-        const order_by = isAsc ? "asc": "desc";
-    //-------------------------------------------
+    function getWarehouses(sort_by = "warehouse_name", isAsc = true) {
+        const order_by = isAsc ? "asc" : "desc";
+        //-------------------------------------------
         axios
             .get(`${apiUrl}/warehouses?sort_by=${sort_by}&order_by=${order_by}`)
             .then((response) => {
@@ -32,10 +32,33 @@ function WarehouseBody() {
             });
     }
 
+    // Manjot Code Start---------------
+
+    //columns not to search
+    const excludeColumns = ["id"];
+
+    //filter inventory listing; if no value, return all inventory items
+    //else, check if any keys in inventory object are included in the excludeColumns array;
+    //if not in that array, then return true if value of key includes search value
+    const filteredWarehouses = warehouses.filter((warehouse) => {
+        const lowerCasedSearch = search.toLowerCase();
+        if (search === "") {
+            return warehouse;
+        } else {
+            return Object.keys(warehouse).some((key) => {
+                return excludeColumns.includes(key)
+                    ? false
+                    : warehouse[key].toString().toLowerCase().includes(lowerCasedSearch);
+            });
+        }
+    });
+
+    // Manjot Code End-----------------
+
     return (
         <ul className="warehouse-table">
             {/* diving deeper -GJ */}
-            <WarehouseHeader getWarehouses={getWarehouses}/>
+            <WarehouseHeader getWarehouses={getWarehouses} />
             {isOpen && (
                 <DeleteModal
                     setIsOpen={setIsOpen}
@@ -46,7 +69,8 @@ function WarehouseBody() {
                     typePlural="warehouses"
                 />
             )}
-            {warehouses.map((warehouse) => (
+            {/* Manjot Code End */}
+            {filteredWarehouses.map((warehouse) => (
                 <li className="warehouse-table__row" key={warehouse.id}>
                     <div className="warehouse-table__col warehouse-table__col--1" data-label="Warehouse">
                         <Link to={`/warehouses/${warehouse.id}`} className="warehouse-table__col--title">
@@ -81,8 +105,6 @@ function WarehouseBody() {
                         >
                             <img src={deleteIcon} alt="delete" />
                         </button>
-
-                        {console.log(`warehouse name ${warehouse.warehouse_name}`)}
                         <button className="warehouse-table__col--btn">
                             <img src={editIcon} alt="edit" />
                         </button>
