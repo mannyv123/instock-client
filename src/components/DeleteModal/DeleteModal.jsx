@@ -4,25 +4,19 @@ import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
 import { apiUrl } from "../../App";
 
-function DeleteModal({ setIsOpen, warehouse, getWarehouses }) {
-    const type = "warehouse";
-    const typePlural = "warehouses";
-
-    const handleWarehouseDelete = () => {
+function DeleteModal({ setIsOpen, item, getItems, apiPath, type, typePlural }) {
+    const handleDelete = () => {
         console.log("DELETE");
         axios
-            .delete(`${apiUrl}/warehouses/${warehouse.id}`)
+            .delete(`${apiUrl}${apiPath}/${item.id}`)
             .then(() => {
-                console.log(`Warehouse with ID ${warehouse.id} successfully deleted`);
                 setIsOpen(false);
-                getWarehouses();
+                getItems();
             })
             .catch((error) => {
                 console.error(error);
             });
     };
-
-    console.log(warehouse);
 
     return (
         <div className="modal">
@@ -37,12 +31,14 @@ function DeleteModal({ setIsOpen, warehouse, getWarehouses }) {
                 <div className="modal__content">
                     <div className="modal__header">
                         <h1 className="modal__title">
-                            Delete {warehouse.warehouse_name} {type}?
+                            Delete {type === "warehouse" ? item.warehouse_name : item.item_name} {type}?
                         </h1>
                     </div>
 
                     <p className="modal__text">
-                        Please confirm that you'd like to delete {warehouse.warehouse_name} from the list of
+                        Please confirm that you'd like to delete
+                        {type === "warehouse" ? ` ${item.warehouse_name} ` : ` ${item.item_name} `}
+                        from the list of
                         {` ${typePlural}`}. You won't be able to undo this action.
                     </p>
                     <div className="modal__actions">
@@ -54,7 +50,7 @@ function DeleteModal({ setIsOpen, warehouse, getWarehouses }) {
                         </button>
                         <button
                             type="button"
-                            onClick={handleWarehouseDelete}
+                            onClick={handleDelete}
                             className="modal__button modal__button--delete"
                         >
                             Delete
