@@ -17,10 +17,6 @@ function WarehouseBody({ search }) {
         getWarehouses();
     }, []);
 
-    // useEffect(() => {
-    //     filterData(search);
-    // }, [search]);
-
     function getWarehouses() {
         axios
             .get(`${apiUrl}/warehouses`)
@@ -32,9 +28,14 @@ function WarehouseBody({ search }) {
             });
     }
 
-    // Manjot Code Start
+    // Manjot Code Start---------------
 
+    //columns not to search
     const excludeColumns = ["id"];
+
+    //filter inventory listing; if no value, return all inventory items
+    //else, check if any keys in inventory object are included in the excludeColumns array;
+    //if not in that array, then return true if value of key includes search value
     const filteredWarehouses = warehouses.filter((warehouse) => {
         const lowerCasedSearch = search.toLowerCase();
         if (search === "") {
@@ -48,7 +49,7 @@ function WarehouseBody({ search }) {
         }
     });
 
-    // Manjot Code End
+    // Manjot Code End-----------------
 
     return (
         <ul className="warehouse-table">

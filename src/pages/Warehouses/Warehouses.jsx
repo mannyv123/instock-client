@@ -8,6 +8,7 @@ function Warehouses() {
     //------------------Manjot Code Start---------------------
     const [search, setSearch] = useState("");
 
+    //set search value based on input from search bar; search value is passed to warehouseBody via props
     const handleSearchInput = (event) => {
         const { value } = event.target;
         setSearch(value);
