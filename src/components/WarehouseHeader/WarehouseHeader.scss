@@ -10,7 +10,6 @@
         padding: 0.5rem 0 0.5rem;
         flex: 1 1 50%;
         font-size: 0.75rem;
-        color: $instock-black;
 
         @include tablet{
             font-size: $fs-desktop-bodySmall;
@@ -37,6 +36,9 @@
                     display: block;
                     margin-top: 3px;
                 }
+            }
+            &:hover{
+                text-decoration: underline;
             }
         }
     
@@ -74,12 +76,14 @@
         }
 
         &--1{
+            flex-basis: 45%;
             @include tablet{
                 flex: 1.5;
             }
         }
 
         &--2{
+            flex-basis: 45%;
             order: 3;
 
             @include tablet{
@@ -89,6 +93,7 @@
         }
 
         &--3{
+            flex-basis: 50%;
             order: 2;
 
             @include tablet{
@@ -97,6 +102,7 @@
         }
 
         &--4{
+            flex-basis: 50%;
             order: 4;
 
             @include tablet{
