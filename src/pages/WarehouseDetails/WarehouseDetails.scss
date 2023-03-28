@@ -10,7 +10,7 @@
   @include tablet {
     flex-direction: row;
     align-items: center;
-    padding: 2rem 2.5rem;
+    padding: 2rem 2rem;
   }
   &__address {
     width: 100%;
@@ -64,7 +64,7 @@
   border-bottom: solid 1px $instock-cloud;
   @include tablet {
     align-items: center;
-    padding: 1.3rem 2.5rem 1rem;
+    padding: 1.3rem 2rem 1rem;
   }
   &__title {
     display: flex;

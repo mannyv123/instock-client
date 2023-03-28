@@ -55,8 +55,10 @@
     background: url("../../assets/icons/search-24px.svg") no-repeat;
     background-position: right 1rem center;
 
+
     &:focus {
       outline: solid 0.125rem $instock-indigo;
+      background-image: none;
     }
 
     &::placeholder {

@@ -4,7 +4,7 @@
 
 .content {
   &__header {
-    padding: 1.2rem 0 0.5rem 2rem;
+    // padding: 1.2rem 0 0.5rem 2rem;
     font-size: 1.6rem;
     font-weight: $fw-semi-bold;
     color: $instock-black;
@@ -13,7 +13,7 @@
     }
   }
   &__sub-container {
-    padding: 1rem 1.5rem;
+    padding: 1.05rem 1.5rem 0.9rem;
     display: flex;
   }
   &__arrow-back {
