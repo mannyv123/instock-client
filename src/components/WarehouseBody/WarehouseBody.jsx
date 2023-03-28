@@ -99,9 +99,9 @@ function WarehouseBody({ search }) {
                                    className='warehouse-table__col--btn'>
                                    <img src={deleteIcon} alt='delete' />
                               </button>
-                              <button className='warehouse-table__col--btn'>
+                              <Link to={`/warehouses/${warehouse.id}/edit`} className='warehouse-table__col--btn'>
                                    <img src={editIcon} alt='edit' />
-                              </button>
+                              </Link>
                          </div>
                     </li>
                ))}
