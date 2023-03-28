@@ -4,31 +4,39 @@
 
 .content {
   &__header {
-    padding: 1.2rem 0 0.5rem 2rem;
-    font-size: 1.6rem;
+    padding: 0.23rem 1.7rem;
+    font-size: $fs-mobile-pageHeader;
     font-weight: $fw-semi-bold;
     color: $instock-black;
+    
     @include tablet {
       font-size: 1.9rem;
+      // padding: 1.3rem 2.5rem 1rem;
     }
   }
   &__sub-container {
-    padding: 1rem 1.5rem;
+    // padding: 1.3rem 1.5rem 1rem;
     display: flex;
   }
+  
   &__arrow-back {
+
+    
     &--icon {
       background-image: url(../../assets/icons/arrow_back-24px.svg);
-      margin-top: 1.65rem;
+      margin-top: 0.75rem;
       width: 1.5rem;
       height: 1.5rem;
       background-repeat: no-repeat;
       position: absolute;
+      animation: none;
+      cursor: pointer;
       &:hover {
-        cursor: pointer;
+        animation: moveArrow 1s linear infinite;
+        transform: translateX(-10px);
       }
       @include tablet {
-        margin-top: 2rem;
+        margin-top: 1rem;
       }
     }
   }
@@ -148,4 +156,17 @@
 }
 .error-state {
   border-color: $instock-red;
+}
+
+
+@keyframes moveArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

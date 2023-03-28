@@ -65,9 +65,9 @@ function DetailsBody() {
                                    <button className='warehouse-details__col--btn'>
                                         <img className='warehouse-details__col--img' src={deleteIcon} alt='delete' />
                                    </button>
-                                   <button className='warehouse-details__col--btn'>
+                                   <Link to={`/inventory/${inventory.id}/edit`} className='warehouse-details__col--btn'>
                                         <img className='warehouse-details__col--img' src={editIcon} alt='edit' />
-                                   </button>
+                                   </Link>
                               </div>
                          </li>
                     ))
