@@ -3,22 +3,28 @@
 @use '../../styles/partials/fonts' as *;
 
 .header {
-    padding: 1.6875rem 1rem;
-    display: flex;
-    flex-direction: column;
     background-color: $instock-graphite;
-    padding-bottom: 5.35rem;
 
-    @include tablet {
-        padding: 1.6875rem 3rem;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-bottom: 6.5rem;
-    }
-
-    @include desktop {
-        padding-left: 4rem;
-        padding-right: 4rem;
+    &__div {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        padding: 1.6875rem 0rem;
+        display: flex;
+        flex-direction: column;
+        background-color: $instock-graphite;
+        padding-bottom: 5.35rem;
+    
+        @include tablet {
+            padding: 1.6875rem 0rem;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 6.5rem;
+        }
+    
+        @include desktop {
+            max-width: 80rem;
+        }
     }
 
     &__logo {
@@ -74,21 +80,5 @@
 
     &__button:focus {
         background-color: $instock-black;
-    }
-}
-
-.container--special {
-    width: 90%;
-    border-radius: 0.1875rem;
-    // height: auto;
-    // margin-top: -4rem;
-    // margin-inline: auto;
-    background-color: $instock-graphite;
-    // box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    @include tablet {
-        margin: auto 0;
-    }
-    @include desktop {
-        max-width: 80rem;
     }
 }
