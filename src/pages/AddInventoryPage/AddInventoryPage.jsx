@@ -79,7 +79,7 @@ function AddInventoryPage() {
         } else if (!values.status) {
             setIsInvalidStatus(true);
             return false;
-        } else if (values.quantity === 0 && values.status === "In Stock") {
+        } else if (values.quantity <= 0 && values.status === "In Stock") {
             setIsInvalidQuantity(true);
             return false;
         } else if (!values.warehouse_id) {
@@ -99,12 +99,17 @@ function AddInventoryPage() {
             return console.error("Form is not valid");
         }
 
+        if (values.status === "Out of Stock") {
+            values.quantity = 0;
+        }
+
         values.quantity = parseInt(values.quantity);
 
         axios
             .post(`${apiUrl}/inventories`, values)
             .then(() => {
                 navigate("/inventory");
+                alert(`${values.item_name} successfully created!`);
             })
             .catch((error) => {
                 console.error(error);
@@ -239,7 +244,7 @@ function AddInventoryPage() {
                                     onChange={handleInputChange}
                                     value={values.quantity}
                                 />
-                                {isInvalidQuantity && <ErrorMsg />}
+                                {isInvalidQuantity && <ErrorMsg isInvalidQuantity={isInvalidQuantity} />}
                             </>
                         )}
 
