@@ -20,7 +20,6 @@ function WarehouseDetails() {
         (id) => {
             if (id) {
                 axios.get(`${apiUrl}/warehouses/${id}`).then((response) => {
-                    console.log(response.data);
                     // we are calling setWarehouse here.
                     setWarehouse(response.data);
                 });

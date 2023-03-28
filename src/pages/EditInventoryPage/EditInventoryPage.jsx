@@ -85,7 +85,6 @@ function InventoryEdit() {
             ...inventory,
             [name]: value,
         });
-        console.log("item name: ", value);
     }
 
     async function getWarehouses() {
@@ -126,15 +125,18 @@ function InventoryEdit() {
         }
     }
 
+    //When cancel button clicked, navigate back home
+    const handleCancel = () => navigate("/inventory");
+
     // If inventory id is valid, it will render everything, otherwise, it will show "Item not found"
     if (inventory) {
         return (
             <section className="container">
                 <form className="content" onSubmit={handleSubmit}>
                     <div className="content__sub-container">
-                        <a className="content__arrow-back" onClick={handleOnBack}>
+                        <div className="content__arrow-back" onClick={handleOnBack}>
                             <span className="content__arrow-back--icon"></span>
-                        </a>
+                        </div>
                         <h1 className="content__header">Edit Inventory Item</h1>
                     </div>
                     <div className="content__container">
@@ -248,7 +250,9 @@ function InventoryEdit() {
                         </div>
                     </div>
                     <div className="content__buttons-container">
-                        <button className="content__cancel">Cancel</button>
+                        <button className="content__cancel" onClick={handleCancel} type="button">
+                            Cancel
+                        </button>
                         <button className="content__submit" type="submit">
                             Save
                         </button>
@@ -261,9 +265,9 @@ function InventoryEdit() {
             <section className="container">
                 <form className="content" onSubmit={handleSubmit}>
                     <div className="content__sub-container">
-                        <a className="content__arrow-back" onClick={handleOnBack}>
+                        <div className="content__arrow-back" onClick={handleOnBack}>
                             <span className="content__arrow-back--icon"></span>
-                        </a>
+                        </div>
                         <h1 className="content__header">Item Not Found</h1>
                     </div>
                 </form>

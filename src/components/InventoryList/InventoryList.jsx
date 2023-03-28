@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import InventoryRow from "../InventoryRow/InventoryRow";
 import InventoryRibbon from "../InventoryRibbon/InventoryRibbon";
 import SearchHeader from "../SearchHeader/SearchHeader";
