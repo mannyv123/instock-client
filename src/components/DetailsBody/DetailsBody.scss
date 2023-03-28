@@ -1,0 +1,75 @@
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.warehouse-details {
+    font-family: 'Titillium Web', sans-serif;
+    padding: 0;
+    border-top: solid 1px grey;
+
+    @include tablet{
+        border-top: none;
+    }
+
+    &__header {
+        display: none;
+        list-style: none;
+        background-color: #F7F8F9;
+
+        @include tablet {
+            display: block;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 600;
+            color: $instock-slate;
+            gap: 1rem;
+            padding: 0 2rem;
+        }
+    }
+
+    &__row {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.6rem;
+        border-bottom: solid 1px $instock-cloud;
+        padding: 0.7rem 1.8rem;
+
+        &:last-child{ border-bottom: none; }
+
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0;
+            gap: 1rem;
+            padding: 0.7rem 2.5rem;
+
+            &:hover {
+                background-color: aliceblue;
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    &__notfound{
+        text-align: center;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+    .sort{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &::after{
+            content: url(../../assets/icons/sort-24px.svg);
+        }
+
+    }

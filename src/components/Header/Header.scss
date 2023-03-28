@@ -1,35 +1,50 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/fonts' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
 
 .header {
-    padding: 1.6875rem 1rem;
-    display: flex;
-    flex-direction: column;
     background-color: $instock-graphite;
 
-    @include tablet {
-        padding: 1.6875rem 2rem;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-bottom: 6.5rem;
-    }
+    &__div {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        padding: 1.6875rem 0rem;
+        display: flex;
+        flex-direction: column;
+        background-color: $instock-graphite;
+        padding-bottom: 5.35rem;
 
-    @include desktop {
-        padding: 1.6875rem 8.125rem;
+        @include tablet {
+            padding: 1.6875rem 0rem;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 6.5rem;
+        }
+
+        @include desktop {
+            max-width: 80rem;
+        }
     }
 
     &__logo {
-        height: 1.076923rem;
+        width: 8.036875rem;
         margin: 0 auto;
-        padding-bottom: 1.5rem;
+        padding-bottom: 1rem;
         box-sizing: content-box;
 
         @include tablet {
-            height: 1.076923rem;
             padding-top: 0.68rem;
             margin: 0 auto 0 0;
             padding-bottom: 0;
+        }
+    }
+
+    &__nav {
+        margin: 0 auto;
+
+        @include tablet {
+            margin: 0 auto 0 0;
         }
     }
 
@@ -54,6 +69,10 @@
         background-color: $instock-graphite;
         font-size: $fs-mobile-buttons;
 
+        &:hover {
+            text-decoration: underline;
+        }
+
         @include tablet {
             width: 6.6875rem;
             height: 2.375rem;
@@ -61,7 +80,7 @@
         }
     }
 
-    &__button:hover {
+    &__button:focus {
         background-color: $instock-black;
     }
 }

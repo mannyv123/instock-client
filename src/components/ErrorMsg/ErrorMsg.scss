@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.error-msg {
+    display: flex;
+    flex-direction: column;
+    color: #c94515;
+    font-size: 0.6875rem;
+
+    @include tablet {
+        font-size: 0.75rem;
+    }
+
+    &__main {
+        display: flex;
+    }
+
+    &__icon {
+        width: 1rem;
+        margin-right: 0.3125rem;
+    }
+}

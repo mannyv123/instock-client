@@ -2,9 +2,9 @@ import "./AddInventoryPage.scss";
 import arrowBack from "../../assets/icons/arrow_back-24px.svg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-const apiUrl = "http://localhost:5001/api";
+import { useNavigate, Link } from "react-router-dom";
+import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
+import { apiUrl } from "../../App";
 
 const initialValues = {
     item_name: "",
@@ -19,13 +19,18 @@ function AddInventoryPage() {
     const [warehouses, setWarehouses] = useState([]);
     const [values, setValues] = useState(initialValues);
     const navigate = useNavigate();
+    const [isInvalidName, setIsInvalidName] = useState(false);
+    const [isInvalidDesc, setIsInvalidDesc] = useState(false);
+    const [isInvalidCategory, setIsInvalidCategory] = useState(false);
+    const [isInvalidStatus, setIsInvalidStatus] = useState(false);
+    const [isInvalidQuantity, setIsInvalidQuantity] = useState(false);
+    const [isInvalidWarehouse, setIsInvalidWarehouse] = useState(false);
 
+    //Handles updating input values
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-
         setValues({ ...values, [name]: value });
     };
-    console.log(values);
 
     //Get current warehouses for dropdown selection
     useEffect(() => {
@@ -39,7 +44,14 @@ function AddInventoryPage() {
             });
     }, []);
 
+    //Form validation function
     const isFormValid = () => {
+        setIsInvalidName(false);
+        setIsInvalidDesc(false);
+        setIsInvalidCategory(false);
+        setIsInvalidStatus(false);
+        setIsInvalidQuantity(false);
+        setIsInvalidWarehouse(false);
         if (
             !values.item_name &&
             !values.description &&
@@ -48,31 +60,37 @@ function AddInventoryPage() {
             !values.quantity &&
             !values.warehouse_id
         ) {
-            console.log("everything is blank");
+            setIsInvalidName(true);
+            setIsInvalidDesc(true);
+            setIsInvalidCategory(true);
+            setIsInvalidStatus(true);
+            setIsInvalidQuantity(true);
+            setIsInvalidWarehouse(true);
             return false;
         } else if (!values.item_name) {
-            console.log("item_name is blank");
+            setIsInvalidName(true);
             return false;
         } else if (!values.description) {
-            console.log("description is blank");
+            setIsInvalidDesc(true);
             return false;
         } else if (!values.category) {
-            console.log("category is blank");
+            setIsInvalidCategory(true);
             return false;
         } else if (!values.status) {
-            console.log("status is blank");
+            setIsInvalidStatus(true);
             return false;
-        } else if (values.quantity === 0 && values.status === "In Stock") {
-            console.log("quantity is blank");
+        } else if (values.quantity <= 0 && values.status === "In Stock") {
+            setIsInvalidQuantity(true);
             return false;
         } else if (!values.warehouse_id) {
-            console.log("warehouse_id is blank");
+            setIsInvalidWarehouse(true);
             return false;
         } else {
             return true;
         }
     };
 
+    //Function for Form Submission
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
@@ -81,12 +99,17 @@ function AddInventoryPage() {
             return console.error("Form is not valid");
         }
 
+        if (values.status === "Out of Stock") {
+            values.quantity = 0;
+        }
+
         values.quantity = parseInt(values.quantity);
 
         axios
             .post(`${apiUrl}/inventories`, values)
-            .then((response) => {
-                console.log(response);
+            .then(() => {
+                navigate("/inventory");
+                alert(`${values.item_name} successfully created!`);
             })
             .catch((error) => {
                 console.error(error);
@@ -100,12 +123,14 @@ function AddInventoryPage() {
         <section className="container">
             <section className="new-inventory">
                 <div className="new-inventory__header">
-                    <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    <Link className="new-inventory__back-link" to="/inventory">
+                        <img className="new-inventory__back" src={arrowBack} alt="back arrow" />
+                    </Link>
                     <h1 className="new-inventory__title">Add New Inventory Item</h1>
                 </div>
                 <form
-                    action="submit"
                     className="new-inventory__form"
+                    action="submit"
                     onSubmit={(event) => handleFormSubmit(event)}
                 >
                     <div className="new-inventory__item-details">
@@ -114,28 +139,36 @@ function AddInventoryPage() {
                             Item Name
                         </label>
                         <input
-                            className="new-inventory__input"
+                            className={`new-inventory__input ${
+                                !isInvalidName ? "" : "new-inventory__input--error"
+                            }`}
                             type="text"
                             name="item_name"
                             id="item_name"
                             placeholder="Item Name"
                             onChange={handleInputChange}
                         />
+                        {isInvalidName && <ErrorMsg />}
                         <label className="new-inventory__label" htmlFor="description">
                             Description
                         </label>
                         <textarea
-                            className="new-inventory__description"
+                            className={`new-inventory__description ${
+                                !isInvalidDesc ? "" : "new-inventory__description--error"
+                            }`}
                             name="description"
                             id="description"
                             placeholder="Please enter a brief description..."
                             onChange={handleInputChange}
                         ></textarea>
+                        {isInvalidDesc && <ErrorMsg />}
                         <label className="new-inventory__label" htmlFor="category">
                             Category
                         </label>
                         <select
-                            className="new-inventory__dropdown"
+                            className={`new-inventory__dropdown ${
+                                !isInvalidCategory ? "" : "new-inventory__dropdown--error"
+                            }`}
                             name="category"
                             id="category"
                             onChange={handleInputChange}
@@ -147,6 +180,7 @@ function AddInventoryPage() {
                             <option value="Health">Health</option>
                             <option value="Apparel">Apparel</option>
                         </select>
+                        {isInvalidCategory && <ErrorMsg />}
                     </div>
                     <div className="new-inventory__item-avail">
                         <h2 className="new-inventory__sub-header">Item Availability</h2>
@@ -163,7 +197,14 @@ function AddInventoryPage() {
                                     value="In Stock"
                                     onChange={handleInputChange}
                                 />
-                                <label htmlFor="inStock">In Stock</label>
+                                <label
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
+                                    htmlFor="inStock"
+                                >
+                                    In Stock
+                                </label>
                             </div>
                             <div className="new-inventory__radio">
                                 <input
@@ -174,9 +215,17 @@ function AddInventoryPage() {
                                     value="Out of Stock"
                                     onChange={handleInputChange}
                                 />
-                                <label htmlFor="outOfStock">Out of Stock</label>
+                                <label
+                                    className={`new-inventory__status-label ${
+                                        !isInvalidStatus ? "" : "new-inventory__status-label--error"
+                                    }`}
+                                    htmlFor="outOfStock"
+                                >
+                                    Out of Stock
+                                </label>
                             </div>
                         </div>
+                        {isInvalidStatus && <ErrorMsg />}
                         {/* Only renders quantity input on initial load or if status is set to In Stock */}
                         {values.status === "Out of Stock" ? (
                             ""
@@ -186,13 +235,16 @@ function AddInventoryPage() {
                                     Quantity
                                 </label>
                                 <input
-                                    className="new-inventory__input"
+                                    className={`new-inventory__input new-inventory__input--quantity ${
+                                        !isInvalidQuantity ? "" : "new-inventory__input--error"
+                                    }`}
                                     type="text"
                                     name="quantity"
                                     id="quantity"
                                     onChange={handleInputChange}
                                     value={values.quantity}
                                 />
+                                {isInvalidQuantity && <ErrorMsg isInvalidQuantity={isInvalidQuantity} />}
                             </>
                         )}
 
@@ -200,7 +252,9 @@ function AddInventoryPage() {
                             Warehouse
                         </label>
                         <select
-                            className="new-inventory__dropdown"
+                            className={`new-inventory__dropdown ${
+                                !isInvalidWarehouse ? "" : "new-inventory__dropdown--error"
+                            }`}
                             name="warehouse_id"
                             id="warehouse_id"
                             onChange={handleInputChange}
@@ -214,6 +268,7 @@ function AddInventoryPage() {
                                 );
                             })}
                         </select>
+                        {isInvalidWarehouse && <ErrorMsg />}
                     </div>
                     <div className="new-inventory__form-actions">
                         <button

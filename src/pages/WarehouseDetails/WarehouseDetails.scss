@@ -1,0 +1,149 @@
+// GJ's work
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse-info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.8rem;
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    padding: 2rem 2rem;
+  }
+  &__address {
+    width: 100%;
+    // padding: 1.5rem 0;
+    @include tablet {
+      flex-basis: 35%;
+    }
+    &--title {
+      font-size: $fs-mobile-bodySmall;
+      text-transform: uppercase;
+      color: $instock-slate;
+    }
+    &--text {
+      font-size: $fs-mobile-bodyMedium;
+      color: $instock-black;
+    }
+  }
+}
+.warehouse-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  gap: 1rem;
+  @include tablet {
+    flex: 1;
+    border-left: solid 1px $instock-cloud;
+    padding-left: 2.5rem;
+    margin-top: 0;
+  }
+  &__contact {
+    width: 50%;
+    // padding: 1rem 0;
+    @include tablet {
+      flex-basis: 40%;
+    }
+    &--title {
+      font-size: $fs-mobile-bodySmall;
+      text-transform: uppercase;
+      color: $instock-slate;
+    }
+    &--text {
+      font-size: $fs-mobile-bodyMedium;
+      color: $instock-black;
+    }
+  }
+}
+.warehouse-header {
+  padding: 1.3rem 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px $instock-cloud;
+  @include tablet {
+    align-items: center;
+    padding: 1.3rem 2rem 1rem;
+  }
+  &__title {
+    display: flex;
+    align-items: baseline;
+  }
+  &__comeback {
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    top: 0.3rem;
+    margin-right: 0.5em;
+    animation: none;
+
+    @keyframes moveArrow {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    &:hover {
+      animation: moveArrow 1s linear infinite;
+      transform: translateX(-10px);
+    }
+    
+    @include tablet{
+      top: 0;
+    }
+  }
+  &__text {
+    color: $instock-black;
+    font-size: $fs-mobile-pageHeader;
+
+    @include tablet{
+      font-size: $fs-desktop-pageHeader;
+    }
+  }
+  &__button {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    color: $instock-white;
+    font-weight: $fw-semi-bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.85rem;
+    border: 0;
+    background-color: $instock-indigo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-top: 0.2rem;
+    @include tablet {
+      flex-basis: 5rem;
+      height: 2.5rem;
+      border-radius: 1.25rem;
+      margin-top: 0;
+    }
+    &::before {
+      content: url(../../assets/icons/edit-24px.svg);
+      filter: brightness(0) invert(1) sepia(1) saturate(1) hue-rotate(175deg);
+      height: 1.5rem;
+      scale: 0.8;
+      @include tablet {
+        display: block;
+      }
+    }
+    &::after {
+      content: attr(data-label);
+      display: none;
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+}

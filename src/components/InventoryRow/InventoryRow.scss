@@ -35,44 +35,70 @@
         flex-direction: column;
         padding: 0.5rem 0 0.5rem;
         flex: 1 1 50%;
-        font-size: 0.75rem;
+        font-size: 0.875rem;
 
         &--title{
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-size: $fs-mobile-bodyMedium;
+            font-weight: $fw-semi-bold;
             display: flex;
             flex-direction: row;
             align-items: center;
-            color: blue;
+            color: $instock-indigo;
             text-decoration: none;
+            animation: none;
+
             // margin-top: -0.3rem;
+
+            @keyframes moveArrowRight {
+                0% {
+                  transform: translateX(4px);
+                }
+                50% {
+                  transform: translateX(-100px);
+                }
+                100% {
+                  transform: translateX(4px);
+                }
+              }
 
             @include tablet{
                 margin-top: 0;
+                font-size: $fs-desktop-bodyMedium;
             }
 
             &::after{
                 content: url(../../assets/icons/chevron_right-24px.svg);
                 line-height: 0;
             }
+
+            &:hover::after{
+                animation: moveArrow 1s linear infinite;
+                // transform: translateX(10px);
+            }
         }
 
-        &--success, &--failed{
-            background-color: green;
-            color: #ffffff;
-            width: 5rem;
+        &--success{
+            background-color: rgba($instock-green, 0.1);
+            color: $instock-green;
+            width: 4rem;
             text-align: center;
             padding: 0.4rem;
             border-radius: 1rem;
+            font-size: $fs-mobile-bodySmall;
+            text-transform: uppercase;
+            font-weight: $fw-semi-bold;
         }
         
         &--failed{
-            background-color: red;
-            color: #ffffff;
-            width: 5rem;
+            background-color: rgba($instock-red, 0.1);
+            width: 5.5rem;
             text-align: center;
             padding: 0.4rem;
             border-radius: 1rem;
+            font-size: $fs-mobile-bodySmall;
+            text-transform: uppercase;
+            font-weight: $fw-semi-bold;
+            color: $instock-red;
         }
 
        
@@ -80,7 +106,7 @@
             font-size: 0.6875rem;
             font-weight: 600;
             text-transform: uppercase;
-            color: silver;
+            color: $instock-slate;
             margin-bottom: 0.5rem;
             content: attr(data-label);
             
@@ -185,7 +211,7 @@
                 margin-top: 0;
                 justify-content: flex-end;
                 padding-bottom: 0;
-                padding-top: 1rem;
+                // padding-top: 1rem;
             }
             
             &::before{
@@ -199,7 +225,7 @@
             cursor: pointer;
 
             @include tablet{
-                margin-top: -1rem;
+                margin-top: 0.2rem;
             }
         }
         
@@ -210,20 +236,22 @@
         display: flex;
         flex-wrap: wrap;
         font-size: 0.6rem;
-        border-bottom: solid 1px grey;
+        border-bottom: solid 1px $instock-cloud;
+        padding: 0 1.5rem;
 
         @include tablet {
             display: flex;
             justify-content: space-between;
             margin-top: 0;
             gap: 1rem;
-            padding: 1.5rem 0.5rem;
+            padding: 0.7rem 2rem;
 
             &:hover {
                 background-color: aliceblue;
                 transition: all 0.2s;
             }
         }
+      
     }
 }
 

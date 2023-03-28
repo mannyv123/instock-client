@@ -1,0 +1,24 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/fonts' as *;
+
+* {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.footer {
+    color: $instock-slate;
+    font-size: $fs-mobile-tableHeader;
+    text-align: center;
+    padding: 2.5rem 2rem 2.5rem 2rem;    
+
+    @include tablet {
+        font-size: $fs-desktop-tableHeader;
+        padding: 4.375rem 2rem 2.5rem 2rem;
+    }
+
+    @include desktop {
+        font-size: $fs-desktop-tableHeader;
+        padding: 5.9375rem 8.125rem 3rem 8.125rem;
+    }
+}

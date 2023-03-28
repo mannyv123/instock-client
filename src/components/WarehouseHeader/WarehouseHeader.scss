@@ -1,0 +1,161 @@
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.warehouse-table {
+    
+    &__col {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0 0.5rem;
+        flex: 1 1 50%;
+        font-size: 0.75rem;
+
+        @include tablet{
+            font-size: $fs-desktop-bodySmall;
+        }
+
+        &--title{
+            font-size: $fs-mobile-links;
+            font-weight: $fw-semi-bold;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            color: $instock-indigo;
+            text-decoration: none;
+            animation: none;
+
+            @include tablet{
+                font-size: $fs-desktop-links;
+            }
+
+            @keyframes moveArrowRight {
+                0% {
+                  transform: translateX(4px);
+                }
+                50% {
+                  transform: translateX(-100px);
+                }
+                100% {
+                  transform: translateX(4px);
+                }
+              }
+
+            &::after{
+                content: url(../../assets/icons/chevron_right-24px.svg);
+                line-height: 0;
+                display: block;
+                margin-top: -0.1rem;
+                margin-left: 0.3rem;
+
+                @include tablet{
+                    display: block;
+                    margin-top: 0;
+                }
+            }
+            &:hover::after{
+                animation: moveArrow 1s linear infinite;
+                // transform: translateX(10px);
+            }
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    
+        &:before {
+            font-size: $fs-mobile-bodySmall;
+            font-weight: $fw-semi-bold;
+            text-transform: uppercase;
+            color: $instock-slate;
+            margin-bottom: 0.5rem;
+            content: attr(data-label);
+            
+            @include tablet {
+                display: none;
+            }
+        }
+
+        @include tablet {
+            &--1,
+            &--2,
+            &--3,
+            &--4,
+            &--5
+            {flex: 1;}
+        }
+
+        &--1, &--2, &--3, &--4, &--5{
+            order: 1;
+            display: flex;
+            flex-direction: column;
+
+            @include tablet{
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        &--1{
+            flex-basis: 45%;
+            @include tablet{
+                flex: 1.5;
+            }
+        }
+
+        &--2{
+            flex-basis: 45%;
+            order: 3;
+
+            @include tablet{
+                order: 2;
+                flex: 1.4;
+            }
+        }
+
+        &--3{
+            flex-basis: 50%;
+            order: 2;
+
+            @include tablet{
+                flex: 1.5;
+            }
+        }
+
+        &--4{
+            flex-basis: 50%;
+            order: 4;
+
+            @include tablet{
+                flex: 2.1;
+            }
+        }
+
+        &--5{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 1rem;
+            order: 5;
+            flex: 1 1 100%;
+            padding-bottom: 1rem;
+
+            @include tablet{
+                margin-top: -7px;
+                justify-content: flex-end;
+                padding-bottom: 0;
+                flex: 1;
+            }
+            
+            &::before{
+                content: none;
+            }
+        }
+
+        &--btn{
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        
+    }
+}

@@ -1,0 +1,106 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.search-header {
+  padding: 0.8125rem 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    padding: 1.3rem 2rem 1rem;
+    justify-content: space-around;
+  }
+
+  @include desktop {
+    padding: 1.3rem 2.5rem 1rem;
+  }
+
+  &__title {
+    font-size: $fs-mobile-pageHeader;
+    margin-top: 1rem;
+
+    @include tablet {
+      margin-top: 0;
+      font-size: $fs-desktop-pageHeader;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include tablet {
+      flex-direction: row;
+      margin-left: auto;
+      flex-wrap: nowrap;
+      height: auto;
+      gap: 1rem;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    border: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 2.3rem;
+    outline: solid 0.0625rem $instock-cloud;
+    border-radius: 1.25rem;
+    background: url("../../assets/icons/search-24px.svg") no-repeat;
+    background-position: right 1rem center;
+
+
+    &:focus {
+      outline: solid 0.125rem $instock-indigo;
+      background-image: none;
+    }
+
+    &::placeholder {
+      color: $instock-slate;
+      font-size: $fs-mobile-buttons;
+    }
+
+    @include tablet {
+      height: 2.6rem;
+      flex: 0 0 12rem;
+      transition: all 0.5s;
+    }
+
+    @include desktop {
+      flex: 0 0 18rem;
+    }
+  }
+  
+  &__button {
+    flex-basis: 100%;
+    height: 2.5rem;
+    margin-top: -1rem;
+    border-radius: 1.25rem;
+    color: #ffffff;
+    font-weight: $fw-semi-bold;
+    background: $instock-indigo;
+    cursor: pointer;
+    text-align: center;
+    font-size: $fs-mobile-buttons;
+    border: 0;
+    // I added this padding -GJ
+    padding-top: 0.65rem;
+    transition: all 0.3s ease-in-out;
+
+    @include tablet {
+      margin-top: 0;
+      flex-basis: 11rem;
+      height: 2.6rem;
+    }
+
+    &:hover {
+      background-color: $instock-black;
+    }
+  }
+}

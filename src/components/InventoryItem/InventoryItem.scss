@@ -1,0 +1,131 @@
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+
+.details-grid {
+    display: grid;
+    gap: 1rem;
+    row-gap: 1rem;
+    padding: 1rem 1.8rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "description description"
+      "category category"
+      "status quantity"
+      "warehouse warehouse";
+  
+      @include tablet {
+        row-gap: 2rem;
+        padding: 2.5rem 2rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+          "description description description description"
+          "category status quantity warehouse";
+      }
+  }
+
+  .grid-item{
+
+    &__title{
+      font-size: $fs-mobile-bodySmall;
+      text-transform: uppercase;
+      color: $instock-slate;
+
+      @include tablet{
+        font-size: $fs-desktop-bodySmall;
+      }
+    }
+
+    &__text{
+      font-size: $fs-mobile-bodyMedium;
+
+      @include tablet{
+        font-size: $fs-desktop-bodyMedium;
+      }
+
+      &--success{
+        background-color: rgba($instock-green, 0.1);
+        color: $instock-green;
+        width: 4rem;
+        text-align: center;
+        padding: 0.2rem;
+        border-radius: 1rem;
+        font-size: $fs-mobile-bodySmall;
+        text-transform: uppercase;
+        font-weight: $fw-semi-bold;
+        margin-top: 0.3rem;
+        display: block;
+    }
+    
+    &--failed{
+        background-color: rgba($instock-red, 0.1);
+        width: 5.5rem;
+        color: $instock-red;
+        text-align: center;
+        padding: 0.4rem;
+        border-radius: 1rem;
+        font-size: $fs-mobile-bodySmall;
+        text-transform: uppercase;
+        font-weight: $fw-semi-bold;
+        margin-top: 0.3rem;
+        display: block;
+    }
+    }
+  }
+
+
+  .description {
+    grid-area: description;
+  
+    @include tablet {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 1;
+      padding-right: 1rem;
+    }
+  }
+  
+  .category {
+    grid-area: category;
+  
+    @include tablet {
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 1;
+      padding-right: 1rem;
+    }
+  }
+  
+  .status {
+    grid-area: status;
+  
+    @include tablet { 
+      grid-row: 1 / span 1;
+      grid-column: 3 / span 1;
+      padding-left: 1.5rem;
+
+    }
+  }
+  
+  .quantity {
+    grid-area: quantity;
+  
+    @include tablet { 
+      grid-row: 1 / span 1;
+      grid-column: 4 / span 1;
+    }
+  }
+  
+  
+  .warehouse {
+    grid-area: warehouse;
+    margin-top: 1rem;
+  
+    @include tablet { 
+      grid-column: 3 / span 2;
+      grid-row: 2 / span 1;
+      margin-top: 0;
+      padding-left: 1.5rem;
+    }
+  }
+  

@@ -1,0 +1,170 @@
+@use '../../styles/partials/fonts' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+
+.warehouse-details {
+
+    &__header {
+        display: none;
+        list-style: none;
+        background-color: #F7F8F9;
+
+        @include tablet {
+            display: block;
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 600;
+            color: silver;
+            gap: 1rem;
+            padding: 0 0.5rem;
+        }
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem 0 0.5rem;
+        flex: 1 1 50%;
+        font-size: $fs-mobile-bodyMedium;
+
+        &--title{
+            font-size: $fs-mobile-bodyMedium;
+            font-weight: $fw-semi-bold;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: $instock-indigo;
+            text-decoration: none;
+            // margin-top: -0.3rem;
+
+            @include tablet{
+                margin-top: 0;
+                font-size: 0.85rem;
+            }
+
+            &::after{
+                content: url(../../assets/icons/chevron_right-24px.svg);
+                line-height: 0;
+            }
+        }
+
+        &--success{
+            background-color: rgba($instock-green, 0.1);
+            color: $instock-green;
+            width: 4rem;
+            text-align: center;
+            padding: 0.4rem;
+            border-radius: 1rem;
+            font-size: $fs-mobile-bodySmall;
+            text-transform: uppercase;
+            font-weight: $fw-semi-bold;
+        }
+        
+        &--failed{
+            background-color: rgba($instock-red, 0.1);
+            width: 6rem;
+            text-align: center;
+            padding: 0.4rem;
+            border-radius: 1rem;
+            font-size: $fs-mobile-bodySmall;
+            text-transform: uppercase;
+            font-weight: $fw-semi-bold;
+            color: $instock-red;
+        }
+       
+        &:before {
+            font-size: 0.6875rem;
+            font-weight: $fw-semi-bold;
+            text-transform: uppercase;
+            color: $instock-slate;
+            margin-bottom: 0.5rem;
+            content: attr(data-label);
+            
+            @include tablet {
+                display: none;
+            }
+        }
+
+        @include tablet {
+            &--1,
+            &--2,
+            &--3,
+            &--4,
+            &--5
+            {flex: 1;}
+        }
+
+        &--1, &--2, &--3, &--4, &--5{
+            order: 1;
+            display: flex;
+            flex-direction: column;
+
+            @include tablet{
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        &--1{
+            
+            @include tablet{
+                flex: 1.6;
+            }
+        }
+
+        &--2{
+            order: 3;
+
+            @include tablet{
+                order: 2;
+            }
+        }
+
+        &--3{
+            order: 2;
+
+           
+        }
+
+        &--4{
+            order: 4;
+        }
+
+        &--5{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            order: 6;
+            flex: 1;
+            padding-bottom: 1rem;
+
+            @include tablet{
+                margin-top: -5px;
+                justify-content: flex-end;
+                padding-bottom: 0;
+                // padding-top: 1rem;
+            }
+            
+            &::before{
+                content: none;
+            }
+        }
+
+        &--btn{
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+
+            @include tablet{
+                // margin-top: -1rem;
+            }
+
+        }
+    }
+
+}

@@ -1,36 +1,34 @@
-import './Inventory.scss';
-import InventoryList from '../../components/InventoryList/InventoryList';
-
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-
-const api = process.env.REACT_APP_API_URL;
+import "./Inventory.scss";
+import InventoryList from "../../components/InventoryList/InventoryList";
+import { apiUrl } from "../../App";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 // ------JIRA TICKET #J2VT1-20 -SEYON -------------------------------------
 function Inventory() {
     const [inventoryItems, setInventoryItems] = useState([]);
 
-    useEffect (()=> {
+    useEffect(() => {
         generateInventoryItems();
     }, []);
-
-    function generateInventoryItems () {
+    // diving deeper -GJ
+    function generateInventoryItems(sort_by = "inventory_item", isAsc = true) {
+        const order_by = isAsc ? "asc" : "desc";
         axios
-            .get (`${api}/inventories`)
-            .then ((res)=> {
-                setInventoryItems(res.data)
+            .get(`${apiUrl}/inventories?sort_by=${sort_by}&order_by=${order_by}`)
+            .then((res) => {
+                setInventoryItems(res.data);
             })
-            .catch ((err)=> {
-                console.log('err: ', err)
-            })
-    };
+            .catch((err) => {
+                console.log("err: ", err);
+            });
+    }
 
-// -----------------SEYON CODE END----------------------------------------
-
+    // -----------------SEYON CODE END----------------------------------------
 
     return (
-        <div className='container'>
-            <InventoryList inventoryItems={inventoryItems} />
+        <div className="container">
+            <InventoryList inventoryItems={inventoryItems} generateInventoryItems={generateInventoryItems} />
         </div>
     );
 }

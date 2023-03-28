@@ -1,0 +1,169 @@
+// GJ's work
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.content {
+  &__header {
+    // padding: 1.2rem 0 0.5rem 2rem;
+    font-size: 1.6rem;
+    font-weight: $fw-semi-bold;
+    color: $instock-black;
+    @include tablet {
+      font-size: 1.9rem;
+    }
+  }
+  &__sub-container {
+    padding: 1.05rem 1.5rem 0.9rem;
+    display: flex;
+  }
+  &__arrow-back {
+    &--icon {
+      background-image: url(../../assets/icons/arrow_back-24px.svg);
+      margin-top: 1.65rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background-repeat: no-repeat;
+      position: absolute;
+      &:hover {
+        cursor: pointer;
+      }
+      @include tablet {
+        margin-top: 1.9rem;
+      }
+    }
+  }
+  &__container {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__input-container {
+    @include tablet {
+      border-right: 0.09rem solid $instock-cloud;
+      padding-right: 3.5rem;
+      @include desktop {
+        padding-right: 4rem;
+      }
+    }
+  }
+
+  &__radiobox-container {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__radiobox-text {
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+  }
+
+  &__details-container {
+    padding: 1.5rem;
+    border-top: 0.09rem solid $instock-cloud;
+    @include tablet {
+      width: 100%;
+      padding-top: 0;
+      padding: 2rem;
+    }
+    @include desktop {
+      padding: 2rem;
+    }
+  }
+  &__title {
+    font-size: 1.15rem;
+    padding-bottom: 1.5rem;
+    font-weight: $fw-semi-bold;
+    color: $instock-black;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+  &__input-label {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: $instock-black;
+  }
+  &__input {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 1.3rem;
+    border-color: $instock-cloud;
+    border-style: solid;
+    border-width: 0.09rem;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    outline-color: $instock-indigo;
+    @include tablet {
+      padding: 1.15rem;
+    }
+
+    &--textarea {
+      height: 7.5rem;
+      resize: none;
+    }
+    &--dropdown {
+      appearance: none;
+      background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+      background-repeat: no-repeat;
+      background-position: center right 0.5rem;
+      height: 2.25rem;
+      font-size: 0.8125rem;
+      padding: 0 1rem;
+    }
+  }
+  &__buttons-container {
+    background-color: $instock-light-grey;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    @include tablet {
+      justify-content: end;
+      padding: 1rem 2.5rem 1rem 2rem;
+    }
+  }
+  &__cancel {
+    border-radius: 1.3rem;
+    width: 100%;
+    border-style: solid;
+    border-width: 0.09rem;
+    border-color: $instock-cloud;
+    background-color: $instock-white;
+    font-weight: $fw-semi-bold;
+    color: $instock-slate;
+    &:hover {
+      cursor: pointer;
+      color: $instock-indigo;
+      border-color: $instock-indigo;
+    }
+    @include tablet {
+      width: 5rem;
+      padding: 0.6rem;
+    }
+  }
+  &__submit {
+    border-radius: 1.3rem;
+    width: 100%;
+    border-style: solid;
+    border-color: $instock-indigo;
+    background-color: $instock-indigo;
+    color: $instock-white;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: $fw-semi-bold;
+    &:hover {
+      cursor: pointer;
+      background-color: $instock-graphite;
+      border-color: $instock-graphite;
+    }
+    @include tablet {
+      width: 9rem;
+      padding: 0.6rem;
+    }
+  }
+}
+.error-state {
+  border-color: $instock-red;
+}
