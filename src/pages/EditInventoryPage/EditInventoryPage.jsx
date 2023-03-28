@@ -134,9 +134,9 @@ function InventoryEdit() {
             <section className="container">
                 <form className="content" onSubmit={handleSubmit}>
                     <div className="content__sub-container">
-                        <a className="content__arrow-back" onClick={handleOnBack}>
+                        <div className="content__arrow-back" onClick={handleOnBack}>
                             <span className="content__arrow-back--icon"></span>
-                        </a>
+                        </div>
                         <h1 className="content__header">Edit Inventory Item</h1>
                     </div>
                     <div className="content__container">
@@ -265,9 +265,9 @@ function InventoryEdit() {
             <section className="container">
                 <form className="content" onSubmit={handleSubmit}>
                     <div className="content__sub-container">
-                        <a className="content__arrow-back" onClick={handleOnBack}>
+                        <div className="content__arrow-back" onClick={handleOnBack}>
                             <span className="content__arrow-back--icon"></span>
-                        </a>
+                        </div>
                         <h1 className="content__header">Item Not Found</h1>
                     </div>
                 </form>
