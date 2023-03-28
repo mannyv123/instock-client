@@ -35,7 +35,7 @@ function WarehouseBody({ search }) {
     // Manjot Code Start---------------
 
     //columns not to search
-    const excludeColumns = ["id"];
+    const excludeColumns = ["id", "contact_position"];
 
     //filter inventory listing; if no value, return all inventory items
     //else, check if any keys in inventory object are included in the excludeColumns array;
