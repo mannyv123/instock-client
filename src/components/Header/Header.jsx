@@ -5,20 +5,23 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
     return (
-        <div className='header'>
-            <NavLink className='header__nav' to='/'>
-                <img className='header__logo' src={logo} alt='logo' />
-            </NavLink>
+        <div className="header">
+            <div className='header__div'>
+                <NavLink className='header__nav' to='/'>
+                    <img className='header__logo' src={logo} alt='logo' />
+                </NavLink>
 
-            <div className='header__container'>
-                <NavLink className='header__button' to='/warehouses'>
-                    Warehouses
-                </NavLink>
-                <NavLink className='header__button' to='/inventory'>
-                    Inventory
-                </NavLink>
+                <div className='header__container'>
+                    <NavLink className='header__button' to='/warehouses'>
+                        Warehouses
+                    </NavLink>
+                    <NavLink className='header__button' to='/inventory'>
+                        Inventory
+                    </NavLink>
+                </div>
             </div>
         </div>
+        
     )
 }
 
