@@ -1,6 +1,6 @@
-@use '../../styles/partials/variables' as *;
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/fonts' as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
 
 .header {
     background-color: $instock-graphite;
@@ -14,14 +14,14 @@
         flex-direction: column;
         background-color: $instock-graphite;
         padding-bottom: 5.35rem;
-    
+
         @include tablet {
             padding: 1.6875rem 0rem;
             flex-direction: row;
             justify-content: space-between;
             padding-bottom: 6.5rem;
         }
-    
+
         @include desktop {
             max-width: 80rem;
         }
@@ -68,6 +68,10 @@
         color: $instock-white;
         background-color: $instock-graphite;
         font-size: $fs-mobile-buttons;
+
+        &:hover {
+            text-decoration: underline;
+        }
 
         @include tablet {
             width: 6.6875rem;
