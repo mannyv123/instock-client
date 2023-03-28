@@ -34,7 +34,7 @@ function WarehouseBody({ search }) {
      // Manjot Code Start---------------
 
      //columns not to search
-     const excludeColumns = ['id'];
+     const excludeColumns = ['id', 'contact_position'];
 
      //filter inventory listing; if no value, return all inventory items
      //else, check if any keys in inventory object are included in the excludeColumns array;
@@ -56,6 +56,7 @@ function WarehouseBody({ search }) {
           <ul className='warehouse-table'>
                {/* diving deeper -GJ */}
                <WarehouseHeader getWarehouses={getWarehouses} />
+               {/* Manjot Code Start */}
                {isOpen && (
                     <DeleteModal
                          setIsOpen={setIsOpen}
@@ -98,9 +99,9 @@ function WarehouseBody({ search }) {
                                    className='warehouse-table__col--btn'>
                                    <img src={deleteIcon} alt='delete' />
                               </button>
-                              <Link to={`/warehouses/${warehouse.id}/edit`} className='warehouse-table__col--btn'>
+                              <button className='warehouse-table__col--btn'>
                                    <img src={editIcon} alt='edit' />
-                              </Link>
+                              </button>
                          </div>
                     </li>
                ))}

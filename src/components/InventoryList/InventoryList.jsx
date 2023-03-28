@@ -7,7 +7,9 @@ import "./InventoryList.scss";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import { useState } from "react";
 
-{/* diving deeper -GJ */}
+{
+    /* diving deeper -GJ */
+}
 function InventoryList({ inventoryItems, generateInventoryItems }) {
     const [isOpen, setIsOpen] = useState(false);
     const [inventory, setInventory] = useState();
@@ -22,7 +24,7 @@ function InventoryList({ inventoryItems, generateInventoryItems }) {
     };
 
     //columns not to search
-    const excludeColumns = ["id"];
+    const excludeColumns = ["id", "status", "quantity"];
 
     //filter inventory listing; if no value, return all inventory items
     //else, check if any keys in inventory object are included in the excludeColumns array;
@@ -52,7 +54,7 @@ function InventoryList({ inventoryItems, generateInventoryItems }) {
             />
             <div className="inventory-list">
                 {/* diving deeper -GJ */}
-                <InventoryRibbon generateInventoryItems={generateInventoryItems}/>
+                <InventoryRibbon generateInventoryItems={generateInventoryItems} />
                 {isOpen && (
                     <DeleteModal
                         setIsOpen={setIsOpen}
