@@ -9,7 +9,6 @@ import { apiUrl } from "../../App";
 
 function InventoryItem() {
     const [selectedInventory, setSelectedInventory] = useState({});
-    // const [warehouse] = useState({});
     const { id } = useParams();
 
     useEffect(() => {
