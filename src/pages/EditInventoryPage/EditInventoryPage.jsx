@@ -85,7 +85,6 @@ function InventoryEdit() {
             ...inventory,
             [name]: value,
         });
-        console.log("item name: ", value);
     }
 
     async function getWarehouses() {
