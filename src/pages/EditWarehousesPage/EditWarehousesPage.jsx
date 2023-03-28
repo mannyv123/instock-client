@@ -133,9 +133,9 @@ function WarehousesEdit() {
             <section className="container">
                 <form className="content" onSubmit={handleSubmit}>
                     <div className="content__sub-container">
-                        <a className="content__arrow-back" onClick={handleOnBack}>
+                        <div className="content__arrow-back" onClick={handleOnBack}>
                             <span className="content__arrow-back--icon"></span>
-                        </a>
+                        </div>
                         <h1 className="content__header">Edit Warehouse</h1>
                     </div>
                     <div className="content__container">
