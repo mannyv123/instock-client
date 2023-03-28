@@ -10,6 +10,7 @@
     color: $instock-slate;
     font-size: $fs-mobile-tableHeader;
     text-align: center;
+    padding: 2.5rem 2rem 2.5rem 2rem;    
 
     @include tablet {
         font-size: $fs-desktop-tableHeader;

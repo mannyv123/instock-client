@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom';
 function Header() {
     return (
         <div className='header'>
-            <img className='header__logo' src={logo} alt='logo' />
+            <NavLink className='header__nav' to='/'>
+                <img className='header__logo' src={logo} alt='logo' />
+            </NavLink>
 
             <div className='header__container'>
                 <NavLink className='header__button' to='/warehouses'>
@@ -17,7 +19,7 @@ function Header() {
                 </NavLink>
             </div>
         </div>
-    );
+    )
 }
 
-export default Header;
+export default Header
