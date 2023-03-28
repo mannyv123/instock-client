@@ -3,14 +3,20 @@ import "./DeleteModal.scss";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import axios from "axios";
 import { apiUrl } from "../../App";
+import { useParams } from "react-router-dom";
 
 function DeleteModal({ setIsOpen, item, getItems, apiPath, type, typePlural }) {
+    const { id } = useParams();
     const handleDelete = () => {
         axios
             .delete(`${apiUrl}${apiPath}/${item.id}`)
             .then(() => {
                 setIsOpen(false);
-                getItems();
+                if (id) {
+                    getItems(id);
+                } else {
+                    getItems();
+                }
                 alert("Delete successful!");
             })
             .catch((error) => {
