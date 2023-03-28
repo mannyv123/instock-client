@@ -126,6 +126,9 @@ function InventoryEdit() {
         }
     }
 
+    //When cancel button clicked, navigate back home
+    const handleCancel = () => navigate("/inventory");
+
     // If inventory id is valid, it will render everything, otherwise, it will show "Item not found"
     if (inventory) {
         return (
@@ -248,7 +251,9 @@ function InventoryEdit() {
                         </div>
                     </div>
                     <div className="content__buttons-container">
-                        <button className="content__cancel">Cancel</button>
+                        <button className="content__cancel" onClick={handleCancel} type="button">
+                            Cancel
+                        </button>
                         <button className="content__submit" type="submit">
                             Save
                         </button>
