@@ -10,6 +10,7 @@ import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
 import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import EditWarehousesPage from "./pages/EditWarehousesPage/EditWarehousesPage";
 import Footer from "./components/Footer/Footer";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 //api url
 export const apiUrl = process.env.REACT_APP_API_URL;
@@ -38,6 +39,8 @@ function App() {
                     <Route path="/inventory/add" element={<AddInventoryPage />} />
                     {/* GJ's work below */}
                     <Route path="/inventory/:id/edit" element={<EditInventoryPage />} />
+                    {/* Manjot's work below */}
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
                 <Footer />
             </div>
