@@ -1,0 +1,18 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.not-found {
+    padding: 1rem;
+
+    @include tablet {
+        padding: 2rem;
+    }
+
+    &__title {
+        font-size: $fs-mobile-pageHeader;
+
+        @include tablet {
+            font-size: $fs-desktop-pageHeader;
+        }
+    }
+}
