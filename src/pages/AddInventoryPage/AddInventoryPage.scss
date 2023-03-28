@@ -169,10 +169,15 @@
         height: 1rem;
 
         margin-right: 0.5rem;
+
+        &:checked + label {
+            color: #13182c;
+        }
     }
 
     &__status-label {
         font-size: $fs-mobile-labels;
+        color: #5c667e;
 
         &--error {
             color: $instock-red;

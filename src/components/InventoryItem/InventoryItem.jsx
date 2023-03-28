@@ -41,7 +41,7 @@ function InventoryItem() {
                             </h1>
                         </div>
                         <Link
-                            to={`/warehouse/${warehouse.id}/edit`}
+                            to={`/inventory/${selectedInventory.id}/edit`}
                             className="warehouse-header__button"
                             data-label="Edit"
                         ></Link>

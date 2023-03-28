@@ -42,7 +42,16 @@ function WarehousesAdd() {
         event.preventDefault();
         let isError = false;
         const re_email = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}"); // matches w something@something.com
-        const re_phone = new RegExp("[0-9]{3}[0-9]{3}[0-9]{4}"); // matches w 1231231234
+        const re_phone = new RegExp("[0-9]{3}-[0-9]{3}-[0-9]{4}"); // matches w 123-123-1234
+
+        setIsErrorWarehouseName(false);
+        setIsErrorAddress(false);
+        setIsErrorCity(false);
+        setIsErrorCountry(false);
+        setIsErrorContactName(false);
+        setIsErrorContactPosition(false);
+        setIsErrorContactPhone(false);
+        setIsErrorContactEmail(false);
 
         if (warehouse.warehouse_name === "") {
             setIsErrorWarehouseName(true);
@@ -198,7 +207,7 @@ function WarehousesAdd() {
                                 value={warehouse.contact_phone}
                                 placeholder="Phone Number"
                             />
-                            {isErrorContactPhone && <ErrorMsg />}
+                            {isErrorContactPhone && <ErrorMsg isErrorContactPhone={isErrorContactPhone} />}
                             <h3 className="content__input-label">Email</h3>
                             <input
                                 name="contact_email"
@@ -208,7 +217,7 @@ function WarehousesAdd() {
                                 value={warehouse.contact_email}
                                 placeholder="Email"
                             />
-                            {isErrorContactEmail && <ErrorMsg />}
+                            {isErrorContactEmail && <ErrorMsg isErrorContactEmail={isErrorContactEmail} />}
                         </div>
                     </div>
                     <div className="content__buttons-container">

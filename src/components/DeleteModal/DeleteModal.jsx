@@ -11,6 +11,7 @@ function DeleteModal({ setIsOpen, item, getItems, apiPath, type, typePlural }) {
             .then(() => {
                 setIsOpen(false);
                 getItems();
+                alert("Delete successful!");
             })
             .catch((error) => {
                 console.error(error);
