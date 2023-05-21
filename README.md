@@ -10,7 +10,7 @@ Welcome to the front-end repository of the InStock project. This repository cont
 3) [Features](#markdown-header-Features)
 4) [Tech Stack](#markdown-header-Tech-Stack)
 5) [Run Locally](#markdown-header-Run-Locally)
-6) [Environment Variables](#markdown-header-Environment-Variables)
+6) [Environment Variables](#Environment-Variables)
 
 ## Project Overview
 
