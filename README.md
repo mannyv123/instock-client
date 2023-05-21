@@ -1,70 +1,83 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# InStock - Client
 
-## Available Scripts
+Welcome to the front-end repository of the InStock project. This repository contains the code for the React-based front-end of the Inventory Management System. This project was developed as part of a web development bootcamp, where collaboration and Agile development methodologies were emphasized.
 
-In the project directory, you can run:
 
-### `npm start`
+## Table of Contents
+1) [Project Overview](#markdown-header-Project-Overview)
+2) [Screenshots](#markdown-header-Screenshots)
+3) [Features](#markdown-header-Features)
+4) [Tech Stack](#markdown-header-Tech-Stack)
+5) [Run Locally](#markdown-header-Run-Locally)
+6) [Environment Variables](#markdown-header-Environment-Variables)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The InStock project was developed during a web development bootcamp as a collaborative group project. The goal was to deliver a modern and scalable Inventory Management System for a client. The project required working as an Agile team, following Scrum methodologies and using tools like JIRA, Figma, and Git/GitHub for efficient collaboration and project management.
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Warehouse Page](https://github.com/mannyv123/instock-client/assets/123426666/a4556f7e-401d-47b1-970e-de6f13506b64)
+![Inventory Page](https://github.com/mannyv123/instock-client/assets/123426666/31453a13-87a0-4ea6-b035-4fcfa0a45e0d)
+![Form Validation](https://github.com/mannyv123/instock-client/assets/123426666/b5b2f906-041d-4b54-b89a-9071d24faf8a)
+![Dynamic Search](https://github.com/mannyv123/instock-client/assets/123426666/4c0d47b8-25c3-47df-9142-bb6bb91e5914)
+![Delete Modal](https://github.com/mannyv123/instock-client/assets/123426666/ef3eeec1-ebd8-4772-9a0f-abb481af85b3)
+![Warehouse Details with Inventory Listing](https://github.com/mannyv123/instock-client/assets/123426666/f3c4be0c-3795-46bb-b113-663420978004)
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Overview of warehouses and inventory levels per warehouses
+- Overview of total inventory by inventory type
+- Create / delete inventory or warehouses
+- Edit inventory or warehouse details
+- Search and filtering functionality to find specific warehouses or inventory
+- Form validation when creating new or editing existing warehouses/inventory
+- Responsive design so that the site responds to mobile, tablet, and desktop views
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Client:** React, React Router, BEM/SASS, Figma (design)
 
-### `npm run eject`
+**Server:** Node, Express, MySQL, Knex, Postman (for testing APIs)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Note that the project also involves using Agile development methodologies, including JIRA for project management and the Scrum methodology for collaborative workflow.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Run Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To set up the front-end locally, follow these steps:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Clone this repository to your local machine using the following command:
 
-## Learn More
+```
+  git clone git@github.com:mannyv123/instock-client.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Navigate to the project directory:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+  cd instock-client
+```
 
-### Code Splitting
+Install the required dependencies using npm:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+  npm install
+```
 
-### Analyzing the Bundle Size
+To start the development server and run the front-end locally, use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+  npm run start
+```
 
-### Making a Progressive Web App
+This will launch the application in your default browser and automatically reload it whenever you make code changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Make sure to also clone and run the back-end server as well:
+https://github.com/mannyv123/instock-server
 
-### Advanced Configuration
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To run this project, you will need to add the following environment variable to your .env file (see also .env.sample file):
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`REACT_APP_API_URL`
