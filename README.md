@@ -3,6 +3,8 @@
 
 Welcome to the front-end repository of the InStock project. This repository contains the code for the React-based front-end of the Inventory Management System. This project was developed as part of a web development bootcamp, where collaboration and Agile development methodologies were emphasized.
 
+See also server repo: https://github.com/mannyv123/instock-server
+
 ## Table of Contents
 1) [Project Overview](#Project-Overview)
 2) [Screenshots](#Screenshots)
